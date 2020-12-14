@@ -20,6 +20,7 @@ namespace ERP_Condominio.ViewModels
         [Required(ErrorMessage = "Campo NOME obrigatorio")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "O NOME deve ter no minimo 1 e no máximo 50 caracteres.")]
         public string USUA_NM_NOME { get; set; }
+        public string USUA_NM_CARGO { get; set; }
         [StringLength(10, MinimumLength = 1, ErrorMessage = "A MATRÍCULA deve ter no minimo 1 e no máximo 10 caracteres.")]
         public string USUA_NM_MATRICULA { get; set; }
         [Required(ErrorMessage = "Campo LOGIN obrigatorio")]
@@ -29,8 +30,6 @@ namespace ERP_Condominio.ViewModels
         [StringLength(150, MinimumLength = 1, ErrorMessage = "O E-MAIL deve ter no minimo 1 e no máximo 150 caracteres.")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Deve ser um e-mail válido")]
         public string USUA_NM_EMAIL { get; set; }
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "O CARGO deve ter no máximo 50 caracteres.")]
-        public string USUA_NM_CARGO { get; set; }
         [StringLength(50, MinimumLength = 1, ErrorMessage = "O TELEFONE deve ter no máximo 50 caracteres.")]
         public string USUA_NR_TELEFONE { get; set; }
         [StringLength(50, MinimumLength = 1, ErrorMessage = "O CELULAR deve ter no máximo 50 caracteres.")]
