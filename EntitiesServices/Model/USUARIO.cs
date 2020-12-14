@@ -65,6 +65,15 @@ namespace EntitiesServices.Model
         public string USUA_DS_JUSTIFICATIVA_DEMISSAO { get; set; }
         public Nullable<int> USUA_IN_TIPO_DEMISSAO { get; set; }
         public string USUA_NR_RG { get; set; }
+        public Nullable<int> CARG_CD_ID { get; set; }
+        public Nullable<int> UNID_CD_ID { get; set; }
+        public Nullable<int> COLA_CD_ID { get; set; }
+        public string USUA_NR_MATRICULA { get; set; }
+        public string USUA_NR_WHATSAPP { get; set; }
+        public Nullable<int> USUA_IN_RESPONSAVEL { get; set; }
+        public Nullable<System.DateTime> USUA_DT_ENTRADA { get; set; }
+        public Nullable<System.DateTime> USUA_DT_SAIDA { get; set; }
+        public string USUA_DS_MOTIVO_SAIDA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AGENDA> AGENDA { get; set; }
@@ -91,5 +100,7 @@ namespace EntitiesServices.Model
         public virtual ICollection<TAREFA_VINCULO> TAREFA_VINCULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_ANEXO> USUARIO_ANEXO { get; set; }
+        public virtual CARGO CARGO { get; set; }
+        public virtual UNIDADE UNIDADE { get; set; }
     }
 }

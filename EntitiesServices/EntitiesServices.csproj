@@ -220,6 +220,9 @@
     <Compile Include="Model\ASSINANTE.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CARGO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CATEGORIA_AGENDA.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
@@ -304,13 +307,25 @@
     <Compile Include="Model\TIPO_TAREFA.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TIPO_UNIDADE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TORRE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\UF.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UNIDADE.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\USUARIO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\USUARIO_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\VAGA.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

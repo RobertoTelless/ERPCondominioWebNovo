@@ -2489,6 +2489,10 @@
     <Content Include="Views\Shared\_TopNavbar2.cshtml" />
     <Content Include="Views\Shared\_TopNavbar_Admin.cshtml" />
     <Content Include="Views\Shared\_TopNavbar_Admin_Y.cshtml" />
+    <Content Include="Views\ControleAcesso\Login.cshtml" />
+    <Content Include="Views\ControleAcesso\TrocarSenha.cshtml" />
+    <Content Include="Views\ControleAcesso\TrocarSenhaInicio.cshtml" />
+    <Content Include="Views\ControleAcesso\GerarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2507,7 +2511,6 @@
     <Folder Include="Views\Assinante\" />
     <Folder Include="Views\BaseAdmin\" />
     <Folder Include="Views\Configuracao\" />
-    <Folder Include="Views\ControleAcesso\" />
     <Folder Include="Views\Grupo\" />
     <Folder Include="Views\Log\" />
     <Folder Include="Views\Noticia\" />

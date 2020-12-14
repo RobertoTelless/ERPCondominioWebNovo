@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8fbd88d9b2b742d48b263d2875e1359d" Name="Diagram1">
+      <Diagram DiagramId="8fbd88d9b2b742d48b263d2875e1359d" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA" Width="1.5" PointX="7.5" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA_ANEXO" Width="1.5" PointX="9.75" PointY="23.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA_VINCULO" Width="1.5" PointX="15.75" PointY="30" IsExpanded="true" />
@@ -79,6 +79,19 @@
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_VINCULO_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_ANEXO_USUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CARGO" Width="1.5" PointX="5.25" PointY="20.25" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_UNIDADE" Width="1.5" PointX="5.25" PointY="16.375" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TORRE" Width="1.5" PointX="5.25" PointY="50.25" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.UNIDADE" Width="1.5" PointX="7.5" PointY="39" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.VAGA" Width="1.5" PointX="9.75" PointY="42.375" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CARGO_ASSINANTE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TIPO_UNIDADE_ASSINANTE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TORRE_ASSINANTE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_CARGO" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_UNIDADE_TIPO_UNIDADE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_UNIDADE_TORRE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_UNIDADE" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_VAGA_UNIDADE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
