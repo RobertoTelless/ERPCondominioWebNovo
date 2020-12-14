@@ -19,6 +19,7 @@ namespace ModelServices.Interfaces.EntitiesServices
         Int32 EditUser(USUARIO usuario, LOG log);
         Int32 EditUser(USUARIO usuario);
 
+        USUARIO CheckExist(USUARIO item, Int32? idAss);
         Int32 VerifyUserSubscription(USUARIO usuario);
         Endereco GetAdressCEP(string CEP);
         CONFIGURACAO CarregaConfiguracao(Int32 id);
@@ -30,13 +31,16 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<USUARIO> GetAllItens(Int32 idAss);
         List<USUARIO> GetAllItensBloqueados(Int32 idAss);
         List<USUARIO> GetAllItensAcessoHoje(Int32 idAss);
-        List<USUARIO> ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss);
+        List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargoId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss);
         USUARIO_ANEXO GetAnexoById(Int32 id);
         List<NOTIFICACAO> GetAllItensUser(Int32 id, Int32 idAss);
         List<NOTIFICACAO> GetNotificacaoNovas(Int32 id, Int32 idAss);
         List<NOTICIA> GetAllNoticias(Int32 idAss);
-        USUARIO GetAdministrador(Int32 idAss);
+        USUARIO GetSindico(Int32 idAss);
         List<UF> GetAllUF();
         List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss);
+        List<CARGO> GetAllCargos(Int32 idAss);
+        List<UNIDADE> GetAllUnidades(Int32 idAss);
+        List<TORRE> GetAllTorres(Int32 idAss);
     }
 }

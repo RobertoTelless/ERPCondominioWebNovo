@@ -28,10 +28,13 @@ namespace ModelServices.EntitiesServices
         private readonly IUFRepository _ufRepository;
         private readonly ICategoriaUsuarioRepository _cuRepository;
         private readonly ITemplateRepository _tempRepository;
+        private readonly ICargoRepository _carRepository;
+        private readonly IUnidadeRepository _uniRepository;
+        private readonly ITorreRepository _torRepository;
 
         protected ERP_Condominio_DBEntities Db = new ERP_Condominio_DBEntities();
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository, ITemplateRepository tempRepository) : base(usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, ILogRepository logRepository, IConfiguracaoRepository configuracaoRepository, IPerfilRepository perfRepository, IUsuarioAnexoRepository anexoRepository, INotificacaoRepository notRepository, INoticiaRepository ntcRepository, IUFRepository ufRepository, ICategoriaUsuarioRepository cuRepository, ITemplateRepository tempRepository, ICargoRepository carRepository, IUnidadeRepository uniRepository, ITorreRepository torRepository) : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
             _logRepository = logRepository;
@@ -43,6 +46,15 @@ namespace ModelServices.EntitiesServices
             _ufRepository = ufRepository;
             _cuRepository = cuRepository;
             _tempRepository = tempRepository;
+            _carRepository = carRepository;
+            _uniRepository = uniRepository;
+            _torRepository = torRepository;
+        }
+
+        public USUARIO CheckExist(USUARIO item, Int32? idAss)
+        {
+            USUARIO volta = _usuarioRepository.CheckExist(item, idAss);
+            return volta;
         }
 
         public USUARIO RetriveUserByEmail(String email)
@@ -54,6 +66,21 @@ namespace ModelServices.EntitiesServices
         public List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss)
         {
             return _cuRepository.GetAllItens(idAss);
+        }
+
+        public List<CARGO> GetAllCargos(Int32 idAss)
+        {
+            return _carRepository.GetAllItens(idAss);
+        }
+
+        public List<UNIDADE> GetAllUnidades(Int32 idAss)
+        {
+            return _uniRepository.GetAllItens(idAss);
+        }
+
+        public List<TORRE> GetAllTorres(Int32 idAss)
+        {
+            return _torRepository.GetAllItens(idAss);
         }
 
         public TEMPLATE GetTemplate(String code)
@@ -115,9 +142,9 @@ namespace ModelServices.EntitiesServices
             return _usuarioRepository.GetAllItensBloqueados(idAss);
         }
 
-        public USUARIO GetAdministrador(Int32 idAss)
+        public USUARIO GetSindico(Int32 idAss)
         {
-            return _usuarioRepository.GetAdministrador(idAss);
+            return _usuarioRepository.GetSindico(idAss);
         }
 
         public List<USUARIO> GetAllItensAcessoHoje(Int32 idAss)
@@ -219,9 +246,9 @@ namespace ModelServices.EntitiesServices
             return conf;
         }
 
-        public List<USUARIO> ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss)
+        public List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargoId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss)
         {
-            List<USUARIO> lista = _usuarioRepository.ExecuteFilter(causId, cargo, nome, login, email, cpf, idAss);
+            List<USUARIO> lista = _usuarioRepository.ExecuteFilter(causId, cargoId, unidId, nome, login, email, cpf, idAss);
             return lista;
         }
 

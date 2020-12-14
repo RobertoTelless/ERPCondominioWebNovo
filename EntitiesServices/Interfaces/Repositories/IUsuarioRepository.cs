@@ -9,6 +9,7 @@ namespace ModelServices.Interfaces.Repositories
 {
     public interface IUsuarioRepository : IRepositoryBase<USUARIO>
     {
+        USUARIO CheckExist(USUARIO item, Int32? idAss);
         USUARIO GetByEmail(String email);
         USUARIO GetByLogin(String login);
         USUARIO GetItemById(Int32 id);
@@ -17,7 +18,7 @@ namespace ModelServices.Interfaces.Repositories
         List<USUARIO> GetAllItensBloqueados(Int32 idAss);
         List<USUARIO> GetAllItensAcessoHoje(Int32 idAss);
         List<USUARIO> GetAllUsuariosAdm(Int32 idAss);
-        List<USUARIO> ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss);
-        USUARIO GetAdministrador(Int32 idAss);
+        List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss);
+        USUARIO GetSindico(Int32 idAss);
     }
 }

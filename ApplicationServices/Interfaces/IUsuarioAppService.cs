@@ -20,6 +20,7 @@ namespace ApplicationServices.Interfaces
         Int32 ValidateReativar(USUARIO usuario, USUARIO usuarioLogado);
         Int32 CreateNotificacao(NOTIFICACAO noti, USUARIO usuarioLogado);
 
+        USUARIO CheckExist(USUARIO tarefa, Int32 idUsu);
         USUARIO GetByEmail(String email);
         USUARIO GetByLogin(String login);
         List<USUARIO> GetAllUsuariosAdm(Int32 idAss);
@@ -33,11 +34,14 @@ namespace ApplicationServices.Interfaces
         List<NOTIFICACAO> GetNotificacaoNovas(Int32 id, Int32 idAss);
         Int32 GenerateNewPassword(String email);
         List<PERFIL> GetAllPerfis();
-        Int32 ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto);
+        Int32 ExecuteFilter(Int32? causId, Int32? cargoId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto);
         List<NOTICIA> GetAllNoticias(Int32 idAss);
-        USUARIO GetAdministrador(Int32 idAss);
+        USUARIO GetSindico(Int32 idAss);
         List<UF> GetAllUF();
         List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss);
+        List<CARGO> GetAllCargos(Int32 idAss);
+        List<UNIDADE> GetAllUnidades(Int32 idAss);
+        List<TORRE> GetAllTorres(Int32 idAss);
 
     }
 }

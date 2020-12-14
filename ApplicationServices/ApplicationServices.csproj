@@ -134,6 +134,11 @@
     <Compile Include="Interfaces\IAgendaAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IAssinanteAppService.cs" />
+    <Compile Include="Interfaces\IVagaAppService.cs" />
+    <Compile Include="Interfaces\IUnidadeAppService.cs" />
+    <Compile Include="Interfaces\ITorreAppService.cs" />
+    <Compile Include="Interfaces\ITipoUnidadeAppService.cs" />
+    <Compile Include="Interfaces\ICargoAppService.cs" />
     <Compile Include="Interfaces\ICategoriaAgendaAppService.cs" />
     <Compile Include="Interfaces\ICategoriaNotificacaoAppService.cs" />
     <Compile Include="Interfaces\ICategoriaTelefoneAppService.cs" />

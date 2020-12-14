@@ -136,6 +136,11 @@
     <Compile Include="Repositories\AgendaRepository.cs" />
     <Compile Include="Repositories\AgendaVinculoRepository.cs" />
     <Compile Include="Repositories\AssinanteRepository.cs" />
+    <Compile Include="Repositories\VagaRepository.cs" />
+    <Compile Include="Repositories\UnidadeRepository.cs" />
+    <Compile Include="Repositories\TorreRepository.cs" />
+    <Compile Include="Repositories\CargoRepository.cs" />
+    <Compile Include="Repositories\TipoUnidadeRepository.cs" />
     <Compile Include="Repositories\CategoriaAgendaRepository.cs" />
     <Compile Include="Repositories\CategoriaNotificacaoRepository.cs" />
     <Compile Include="Repositories\CategoriaTelefoneRepository.cs" />
@@ -170,6 +175,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{efecee92-51f6-4bf8-8325-10e82aa5cc01}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntitiesServices\EntitiesServices.csproj">
       <Project>{6caa3cb7-34dd-4c1b-bac3-67b705ade598}</Project>
       <Name>EntitiesServices</Name>

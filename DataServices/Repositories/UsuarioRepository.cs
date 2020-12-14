@@ -11,6 +11,15 @@ namespace DataServices.Repositories
 {
     public class UsuarioRepository : RepositoryBase<USUARIO>, IUsuarioRepository
     {
+        public USUARIO CheckExist(USUARIO item, Int32? idAss)
+        {
+            IQueryable<USUARIO> query = Db.USUARIO;
+            query = query.Where(p => p.USUA_NM_NOME == item.USUA_NM_NOME);
+            query = query.Where(p => p.ASSI_CD_ID == item.ASSI_CD_ID);
+            query = query.Where(p => p.UNID_CD_ID == item.UNID_CD_ID);
+            return query.FirstOrDefault();
+        }
+
         public USUARIO GetByEmail(String email)
         {
             IQueryable<USUARIO> query = Db.USUARIO.Where(p => p.USUA_IN_ATIVO == 1);
@@ -39,10 +48,10 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
-        public USUARIO GetAdministrador(Int32 idAss)
+        public USUARIO GetSindico(Int32 idAss)
         {
             IQueryable<USUARIO> query = Db.USUARIO.Where(p => p.USUA_IN_ATIVO == 1);
-            query = query.Where(p => p.PERFIL.PERF_SG_SIGLA == "ADM");
+            query = query.Where(p => p.PERFIL.PERF_SG_SIGLA == "SIN");
             query = query.Include(p => p.ASSINANTE);
             query = query.Include(p => p.PERFIL);
             return query.FirstOrDefault();
@@ -97,7 +106,7 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
-        public List<USUARIO> ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss)
+        public List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargoId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss)
         {
             List<USUARIO> lista = new List<USUARIO>();
             IQueryable<USUARIO> query = Db.USUARIO;
@@ -117,9 +126,13 @@ namespace DataServices.Repositories
             {
                 query = query.Where(p => p.CAUS_CD_ID == causId);
             }
-            if (!String.IsNullOrEmpty(cargo))
+            if (cargoId != null)
             {
-                query = query.Where(p => p.USUA_NM_CARGO.Contains(cargo));
+                query = query.Where(p => p.CARG_CD_ID == causId);
+            }
+            if (unidId != null)
+            {
+                query = query.Where(p => p.UNID_CD_ID == causId);
             }
             if (!String.IsNullOrEmpty(cpf))
             {
