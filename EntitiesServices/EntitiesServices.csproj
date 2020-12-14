@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CAA3CB7-34DD-4C1B-BAC3-67B705ADE598}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntitiesServices</RootNamespace>
+    <AssemblyName>EntitiesServices</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ical.Net.2.2.3\lib\net46\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Canducci.Zip, Version=3.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CanducciCep.3.0.1\lib\net451\Canducci.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Consulta.CNPJ, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Consulta.CNPJ.1.0.1\lib\netstandard2.0\Consulta.CNPJ.dll</HintPath>
+    </Reference>
+    <Reference Include="DateTimeExtensions, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DateTimeExtensions.5.4.0\lib\net45\DateTimeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ical.Net, Version=2.1.0.19502, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ical.Net.2.2.3\lib\net46\Ical.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ical.Net.Collections, Version=2.1.0.19501, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ical.Net.2.2.3\lib\net46\Ical.Net.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Itenso.TimePeriod, Version=2.1.1.0, Culture=neutral, PublicKeyToken=8cb6db75b4e81486, processorArchitecture=MSIL">
+      <HintPath>..\packages\TimePeriodLibrary.NET.2.1.1\lib\net46\Itenso.TimePeriod.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.0\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.0\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ical.Net.2.2.3\lib\net46\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twilio, Version=5.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.38.0\lib\net451\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.AspNet.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.AspNet.Common.5.37.2\lib\net45\Twilio.AspNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.AspNet.Mvc, Version=5.33.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.AspNet.Mvc.5.33.1\lib\net451\Twilio.AspNet.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\ChechTimeAttribute.cs" />
+    <Compile Include="Attributes\CheckTimeAttributeMain.cs" />
+    <Compile Include="Attributes\CustomValidationCNPJAttribute .cs" />
+    <Compile Include="Attributes\CustomValidationCPFAttribute.cs" />
+    <Compile Include="Attributes\DataAnteriorAttribute.cs" />
+    <Compile Include="EntitiesServices\AgendaService.cs" />
+    <Compile Include="EntitiesServices\AssinanteService.cs" />
+    <Compile Include="EntitiesServices\CategoriaAgendaService.cs" />
+    <Compile Include="EntitiesServices\CategoriaNotificacaoService.cs" />
+    <Compile Include="EntitiesServices\CategoriaTelefoneService.cs" />
+    <Compile Include="EntitiesServices\CategoriaUsuarioService.cs" />
+    <Compile Include="EntitiesServices\ConfiguracaoService.cs" />
+    <Compile Include="EntitiesServices\GrupoService.cs" />
+    <Compile Include="EntitiesServices\LogService.cs" />
+    <Compile Include="EntitiesServices\NoticiaService.cs" />
+    <Compile Include="EntitiesServices\NotificacaoService.cs" />
+    <Compile Include="EntitiesServices\PerfilService.cs" />
+    <Compile Include="EntitiesServices\ServiceBase.cs" />
+    <Compile Include="EntitiesServices\SubgrupoService.cs" />
+    <Compile Include="EntitiesServices\TarefaService.cs" />
+    <Compile Include="EntitiesServices\TelefoneService.cs" />
+    <Compile Include="EntitiesServices\TemplateService.cs" />
+    <Compile Include="EntitiesServices\TipoPessoaService.cs" />
+    <Compile Include="EntitiesServices\UsuarioService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IAgendaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IAssinanteService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICategoriaAgendaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICategoriaNotificacaoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICategoriaTelefoneService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICategoriaUsuarioService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IConfiguracaoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IGrupoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ILogService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\INoticiaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\INotificacaoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IPerfilService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IServiceBase.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ISubgrupoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITarefaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITelefoneService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITemplateService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITipoPessoaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ITipoTarefaService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IUsuarioService.cs" />
+    <Compile Include="Interfaces\Repositories\IAgendaAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAgendaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAgendaVinculoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAssinanteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaAgendaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaNotificacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaTelefoneRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IConfiguracaoAssociacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IConfiguracaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IGrupoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ILogRepository.cs" />
+    <Compile Include="Interfaces\Repositories\INoticiaComentarioRepository.cs" />
+    <Compile Include="Interfaces\Repositories\INoticiaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\INotificacaoAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\INotificacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IPerfilRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\ISubgrupoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaAcompanhamentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaNotificacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITarefaVinculoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITelefoneRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITemplateRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoPessoaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoTarefaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUFRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUsuarioAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Model\AGENDA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AGENDA_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AGENDA_VINCULO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ASSINANTE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_AGENDA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_NOTIFICACAO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_TELEFONE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CATEGORIA_USUARIO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONFIGURACAO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CONFIGURACAO_ASSOCIACAO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ERP_Condominio_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Condominio_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ERP_Condominio_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ERP_Condominio_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP_Condominio_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GRUPO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LOG.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NOTICIA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NOTICIA_COMENTARIO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NOTIFICACAO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NOTIFICACAO_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PERFIL.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SUBGRUPO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAREFA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAREFA_ACOMPANHAMENTO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAREFA_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAREFA_NOTIFICACAO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TAREFA_VINCULO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TELEFONE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TEMPLATE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_PESSOA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_TAREFA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UF.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USUARIO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USUARIO_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkClasses\Endereco.cs" />
+    <Compile Include="WorkClasses\Login.cs" />
+    <Compile Include="WorkClasses\SessionMocks.cs" />
+    <Compile Include="WorkClasses\TrocaSenha.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting\CrossCutting.csproj">
+      <Project>{efecee92-51f6-4bf8-8325-10e82aa5cc01}</Project>
+      <Name>CrossCutting</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\ERP_Condominio_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERP_Condominio_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Model\ERP_Condominio_Model.edmx.diagram">
+      <DependentUpon>ERP_Condominio_Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ERP_Condominio_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ERP_Condominio_Model.Context.cs</LastGenOutput>
+      <DependentUpon>ERP_Condominio_Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\ERP_Condominio_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERP_Condominio_Model.edmx</DependentUpon>
+      <LastGenOutput>ERP_Condominio_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\ExternalServices\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

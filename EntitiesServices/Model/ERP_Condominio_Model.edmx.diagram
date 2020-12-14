@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8fbd88d9b2b742d48b263d2875e1359d" Name="Diagram1">
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA" Width="1.5" PointX="7.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA_ANEXO" Width="1.5" PointX="9.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.AGENDA_VINCULO" Width="1.5" PointX="15.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.ASSINANTE" Width="1.5" PointX="3" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CATEGORIA_AGENDA" Width="1.5" PointX="5.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CATEGORIA_NOTIFICACAO" Width="1.5" PointX="5.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CATEGORIA_TELEFONE" Width="1.5" PointX="5.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CATEGORIA_USUARIO" Width="1.5" PointX="5.25" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CONFIGURACAO" Width="1.5" PointX="5.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.CONFIGURACAO_ASSOCIACAO" Width="1.5" PointX="7.5" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.GRUPO" Width="1.5" PointX="5.25" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.LOG" Width="1.5" PointX="18.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.NOTICIA" Width="1.5" PointX="13.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.NOTICIA_COMENTARIO" Width="1.5" PointX="15.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.NOTIFICACAO" Width="1.5" PointX="10.5" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.NOTIFICACAO_ANEXO" Width="1.5" PointX="12.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.PERFIL" Width="1.5" PointX="11.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.SUBGRUPO" Width="1.5" PointX="10.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TAREFA" Width="1.5" PointX="15.75" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TAREFA_ACOMPANHAMENTO" Width="1.5" PointX="18" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TAREFA_ANEXO" Width="1.5" PointX="18" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TAREFA_NOTIFICACAO" Width="1.5" PointX="21" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TAREFA_VINCULO" Width="1.5" PointX="21" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TELEFONE" Width="1.5" PointX="10.5" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TEMPLATE" Width="1.5" PointX="5.25" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_PESSOA" Width="1.5" PointX="0.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_TAREFA" Width="1.5" PointX="5.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.UF" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.USUARIO" Width="1.5" PointX="13.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.USUARIO_ANEXO" Width="1.5" PointX="15.75" PointY="42.875" IsExpanded="true" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_ANEXO_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_CATEGORIA_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_USUARIO1" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_VINCULO_AGENDA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AGENDA_VINCULO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_ASSINANTE_TIPO_PESSOA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_ASSINANTE_UF" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CATEGORIA_AGENDA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CATEGORIA_NOTIFICACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CATEGORIA_TELEFONE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CATEGORIA_USUARIO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CONFIGURACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_GRUPO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_LOG_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTIFICACAO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_SUBGRUPO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TELEFONE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TEMPLATE_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TIPO_TAREFA_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_ASSINANTE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTIFICACAO_CATEGORIA_NOTIFICACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TELEFONE_CATEGORIA_TELEFONE" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_CATEGORIA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_CONFIGURACAO_ASSOCIACAO_CONFIGURACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_SUBGRUPO_GRUPO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_LOG_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTICIA_COMENTARIO_NOTICIA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTICIA_COMENTARIO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTIFICACAO_ANEXO_NOTIFICACAO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_PERFIL" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_ACOMPANHAMENTO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_ANEXO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_NOTIFICACAO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_TIPO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_VINCULO_TAREFA" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_ACOMPANHAMENTO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_NOTIFICACAO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_TAREFA_VINCULO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_ANEXO_USUARIO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
