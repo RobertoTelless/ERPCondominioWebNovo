@@ -6,7 +6,7 @@ using System.Web;
 using EntitiesServices.Model;
 using EntitiesServices.Attributes;
 
-namespace Ged.ViewModels
+namespace ERP_Condominio.ViewModels
 {
     public class UsuarioViewModel
     {

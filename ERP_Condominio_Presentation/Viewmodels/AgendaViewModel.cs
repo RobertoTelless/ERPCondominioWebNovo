@@ -6,7 +6,7 @@ using EntitiesServices.Model;
 using System.Web;
 using EntitiesServices.Attributes;
 
-namespace Ged.ViewModels
+namespace ERP_Condominio.ViewModels
 {
     public class AgendaViewModel
     {

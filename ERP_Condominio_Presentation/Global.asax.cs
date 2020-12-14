@@ -7,7 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MvcMapping.Mappers;
 
-namespace Ged
+namespace ERP_Condominio
 {
     public class MvcApplication : System.Web.HttpApplication
     {

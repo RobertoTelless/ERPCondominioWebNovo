@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using AutoMapper;
 using EntitiesServices.Model;
-using Ged.ViewModels;
+using ERP_Condominio.ViewModels;
 
 namespace MvcMapping.Mappers
 {
@@ -32,11 +32,7 @@ namespace MvcMapping.Mappers
             CreateMap<CategoriaNotificacaoViewModel, CATEGORIA_NOTIFICACAO>();
             CreateMap<CategoriaTelefoneViewModel, CATEGORIA_TELEFONE>();
             CreateMap<CategoriaUsuarioViewModel, CATEGORIA_USUARIO>();
-            CreateMap<ClasseViewModel, CLASSE>();
-            CreateMap<MetadadoClasseViewModel, METADADO_CLASSE>();
-            CreateMap<TipoDocumentoViewModel, TIPO_DOCUMENTO>();
-            CreateMap<TipoGrupoViewModel, TIPO_GRUPO>();
-            CreateMap<TipoMetadadoViewModel, TIPO_METADADO>();
+            CreateMap<TipoTarefaViewModel, TIPO_TAREFA>();
 
         }
     }

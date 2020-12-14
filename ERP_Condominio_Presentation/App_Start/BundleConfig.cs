@@ -1,7 +1,7 @@
 using System.Web;
 using System.Web.Optimization;
 
-namespace Ged
+namespace ERP_Condominio
 {
     public class BundleConfig
     {

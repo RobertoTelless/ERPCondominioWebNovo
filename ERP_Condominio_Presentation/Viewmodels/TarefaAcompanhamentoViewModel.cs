@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using EntitiesServices.Model;
 
-namespace Ged.ViewModels
+namespace ERP_Condominio.ViewModels
 {
     public class TarefaAcompanhamentoViewModel
     {

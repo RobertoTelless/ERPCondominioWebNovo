@@ -41,14 +41,7 @@
                 </ul>
             </li>
 
-            <li class="@Html.IsSelected(controller: "BaseAdmin")">
-                <a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Taxonomia</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse @Html.IsSelected(controller: "BaseAdmin", cssClass: "in")">
-                    <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Classes</a></li>
-                </ul>
-            </li>
-
-            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM")
+            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM" || ((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "SIN")
             {
                 <li class="@Html.IsSelected(controller: "BaseAdmin")">
                     <a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Cadastros</span> <span class="fa arrow"></span></a>
@@ -58,21 +51,12 @@
                                 <li class="@Html.IsSelected(action: "MontarTelaTemplate")"><a href="@Url.Action("MontarTelaTemplate", "Template")">Templates</a></li>
                             </ul>                    
                         </li>
-                        <li class="@Html.IsSelected(action: "CarregarBase")"><a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Taxonomia</span> <span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level collapse @Html.IsSelected(controller: "BaseAdmin", cssClass: "in")">
-                                <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Grupos</a></li>
-                                <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">SubGrupos</a></li>
-                            </ul>                    
-                        </li>
                         <li class="@Html.IsSelected(action: "CarregarBase")"><a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Cadastros Auxiliares</span> <span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level collapse @Html.IsSelected(controller: "BaseAdmin", cssClass: "in")">
                                 <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Categoria Agenda</a></li>
                                 <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Categoria Notificação</a></li>
                                 <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Categoria Telefones</a></li>
                                 <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Categoria Usuários</a></li>
-                                <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Tipos de Documentos</a></li>
-                                <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Tipos de Grupos</a></li>
-                                <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Tipos de Metadados</a></li>
                                 <li class="@Html.IsSelected(action: "CarregarDesenvolvimento")"><a href="@Url.Action("CarregarDesenvolvimento", "BaseAdmin")">Tipos de Tarefa</a></li>
                             </ul>                    
                         </li>
@@ -80,7 +64,7 @@
                 </li>
             }
 
-            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM")
+            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM" || ((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "SIN")
             {
                 <li class="@Html.IsSelected(controller: "BaseAdmin")">
                     <a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Administração</span> <span class="fa arrow"></span></a>
@@ -94,7 +78,7 @@
                 </li>
             }
 
-            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM")
+            @if (((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "ADM" || ((EntitiesServices.Model.PERFIL)Session["Perfil"]).PERF_SG_SIGLA  == "SIN")
             {
                 <li class="@Html.IsSelected(controller: "BaseAdmin")">
                     <a href="@Url.Action("CarregarBase", "BaseAdmin")"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Configurações</span> <span class="fa arrow"></span></a>

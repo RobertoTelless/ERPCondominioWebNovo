@@ -5,7 +5,7 @@ using System.Linq;
 using EntitiesServices.Model;
 using System.Web;
 
-namespace Ged.ViewModels
+namespace ERP_Condominio.ViewModels
 {
     public class AssinanteViewModel
     {
