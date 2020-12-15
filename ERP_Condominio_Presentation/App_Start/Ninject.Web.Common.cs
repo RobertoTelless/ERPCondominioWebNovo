@@ -82,6 +82,11 @@ namespace Presentation.Start
             kernel.Bind<ITelefoneAppService>().To<TelefoneAppService>();
             kernel.Bind<IGrupoAppService>().To<GrupoAppService>();
             kernel.Bind<ISubgrupoAppService>().To<SubgrupoAppService>();
+            kernel.Bind<ICargoAppService>().To<CargoAppService>();
+            kernel.Bind<ITipoUnidadeAppService>().To<TipoUnidadeAppService>();
+            kernel.Bind<ITorreAppService>().To<TorreAppService>();
+            kernel.Bind<IUnidadeAppService>().To<UnidadeAppService>();
+            kernel.Bind<IVagaAppService>().To<VagaAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IUsuarioService>().To<UsuarioService>();
@@ -97,6 +102,11 @@ namespace Presentation.Start
             kernel.Bind<ITelefoneService>().To<TelefoneService>();
             kernel.Bind<IGrupoService>().To<GrupoService>();
             kernel.Bind<ISubgrupoService>().To<SubgrupoService>();
+            kernel.Bind<ICargoService>().To<CargoService>();
+            kernel.Bind<ITipoUnidadeService>().To<TipoUnidadeService>();
+            kernel.Bind<ITorreService>().To<TorreService>();
+            kernel.Bind<IUnidadeService>().To<UnidadeService>();
+            kernel.Bind<IVagaService>().To<VagaService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IConfiguracaoRepository>().To<ConfiguracaoRepository>();
@@ -124,6 +134,11 @@ namespace Presentation.Start
             kernel.Bind<ITelefoneRepository>().To<TelefoneRepository>();
             kernel.Bind<IGrupoRepository>().To<GrupoRepository>();
             kernel.Bind<ISubgrupoRepository>().To<SubgrupoRepository>();
+            kernel.Bind<ICargoRepository>().To<CargoRepository>();
+            kernel.Bind<ITipoUnidadeRepository>().To<TipoUnidadeRepository>();
+            kernel.Bind<ITorreRepository>().To<TorreRepository>();
+            kernel.Bind<IUnidadeRepository>().To<UnidadeRepository>();
+            kernel.Bind<IVagaRepository>().To<VagaRepository>();
 
         }
     }

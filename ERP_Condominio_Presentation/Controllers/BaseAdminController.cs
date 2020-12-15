@@ -183,43 +183,43 @@ namespace ERP_Condominio_Presentation.Controllers
             // Mensagens
             if ((Int32)Session["MensNotificacao"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensNoticia"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensUsuario"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensLog"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensUsuarioAdm"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensTemplate"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensConfiguracao"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensGrupo"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensSubGrupo"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensTab"] == 2)
             {
-                ModelState.AddModelError("", GED_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             return View(vm);
         }

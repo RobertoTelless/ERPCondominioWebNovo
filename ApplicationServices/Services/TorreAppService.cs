@@ -39,9 +39,9 @@ namespace ApplicationServices.Services
             return item;
         }
 
-        public CARGO CheckExist(CARGO ag, Int32 idAss)
+        public TORRE CheckExist(TORRE ag, Int32 idAss)
         {
-            CARGO item = _baseService.CheckExist(ag, idAss);
+            TORRE item = _baseService.CheckExist(ag, idAss);
             return item;
         }
 

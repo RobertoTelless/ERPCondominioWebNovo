@@ -33,6 +33,11 @@ namespace MvcMapping.Mappers
             CreateMap<CategoriaTelefoneViewModel, CATEGORIA_TELEFONE>();
             CreateMap<CategoriaUsuarioViewModel, CATEGORIA_USUARIO>();
             CreateMap<TipoTarefaViewModel, TIPO_TAREFA>();
+            CreateMap<CargoViewModel, CARGO>();
+            CreateMap<TipoUnidadeViewModel, TIPO_UNIDADE>();
+            CreateMap<TorreViewModel, TORRE>();
+            CreateMap<UnidadeViewModel, UNIDADE>();
+            CreateMap<VagaViewModel, VAGA>();
 
         }
     }

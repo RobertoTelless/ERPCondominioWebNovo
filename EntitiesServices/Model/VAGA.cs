@@ -14,6 +14,12 @@ namespace EntitiesServices.Model
     
     public partial class VAGA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VAGA()
+        {
+            this.VEICULO = new HashSet<VEICULO>();
+        }
+    
         public int VAGA_CD_ID { get; set; }
         public int UNID_CD_ID { get; set; }
         public string VAGA_NR_ANDAR { get; set; }
@@ -21,5 +27,7 @@ namespace EntitiesServices.Model
         public Nullable<int> VAGA_IN_ATIVO { get; set; }
     
         public virtual UNIDADE UNIDADE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VEICULO> VEICULO { get; set; }
     }
 }

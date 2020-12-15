@@ -13,7 +13,7 @@ namespace ApplicationServices.Interfaces
         Int32 ValidateEdit(VAGA item, VAGA itemAntes, USUARIO usuario);
         Int32 ValidateEdit(VAGA item, VAGA itemAntes);
         Int32 ValidateDelete(VAGA item, USUARIO usuario);
-        Int32 ValidateReativar(VAGA item, VAGA usuario);
+        Int32 ValidateReativar(VAGA item, USUARIO usuario);
 
         VAGA CheckExist(VAGA tarefa, Int32 idUsu);
         List<VAGA> GetAllItens(Int32? idAss);

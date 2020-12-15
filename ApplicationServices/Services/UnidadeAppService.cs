@@ -12,11 +12,11 @@ using System.Text.RegularExpressions;
 
 namespace ApplicationServices.Services
 {
-    public class UnidadeService : AppServiceBase<UNIDADE>, IUnidadeAppService
+    public class UnidadeAppService : AppServiceBase<UNIDADE>, IUnidadeAppService
     {
         private readonly IUnidadeService _baseService;
 
-        public UnidadeService(IUnidadeService baseService): base(baseService)
+        public UnidadeAppService(IUnidadeService baseService): base(baseService)
         {
             _baseService = baseService;
         }

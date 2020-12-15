@@ -35,7 +35,7 @@ namespace ERP_Condominio_Presentation.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("Login", "ControleAcesso");
+            return RedirectToAction("Login  ", "ControleAcesso");
         }
 
         public ActionResult About()

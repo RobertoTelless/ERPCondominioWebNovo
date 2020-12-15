@@ -126,12 +126,12 @@ namespace ERP_Condominio_Presentation.Controllers
                 }
                 ViewBag.Greeting = frase;
                 ViewBag.Nome = usuario.USUA_NM_NOME;
-                ViewBag.Cargo = usuario.USUA_NM_CARGO;
+                ViewBag.Cargo = usuario.CARGO.CARG_NM_NOME;
                 ViewBag.Foto = usuario.USUA_AQ_FOTO;
 
                 Session["Greeting"] = frase;
                 Session["Nome"] = usuario.USUA_NM_NOME;
-                Session["Cargo"] = usuario.USUA_NM_CARGO;
+                Session["Cargo"] = usuario.CARGO.CARG_NM_NOME;
                 Session["Foto"] = usuario.USUA_AQ_FOTO;
                 Session["Perfil"] = usuario.PERFIL;
                 Session["FlagInicial"] = 0;

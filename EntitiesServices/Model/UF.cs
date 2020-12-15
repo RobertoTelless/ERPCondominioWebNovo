@@ -18,6 +18,7 @@ namespace EntitiesServices.Model
         public UF()
         {
             this.ASSINANTE = new HashSet<ASSINANTE>();
+            this.FORNECEDOR = new HashSet<FORNECEDOR>();
         }
     
         public int UF_CD_ID { get; set; }
@@ -27,5 +28,7 @@ namespace EntitiesServices.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ASSINANTE> ASSINANTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FORNECEDOR> FORNECEDOR { get; set; }
     }
 }
