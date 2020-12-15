@@ -9,7 +9,7 @@ namespace ApplicationServices.Interfaces
 {
     public interface IUnidadeAppService : IAppServiceBase<UNIDADE>
     {
-        Int32 ValidateCreate(UNIDADE item, USUARIO usuario);
+        Int32 ValidateCreate(UNIDADE item, Int32? torre, USUARIO usuario);
         Int32 ValidateEdit(UNIDADE item, UNIDADE itemAntes, USUARIO usuario);
         Int32 ValidateEdit(UNIDADE item, UNIDADE itemAntes);
         Int32 ValidateDelete(UNIDADE item, USUARIO usuario);

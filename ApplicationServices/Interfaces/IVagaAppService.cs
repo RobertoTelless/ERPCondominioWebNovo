@@ -9,7 +9,7 @@ namespace ApplicationServices.Interfaces
 {
     public interface IVagaAppService : IAppServiceBase<VAGA>
     {
-        Int32 ValidateCreate(VAGA item, USUARIO usuario);
+        Int32 ValidateCreate(VAGA item, Int32? unidade, USUARIO usuario);
         Int32 ValidateEdit(VAGA item, VAGA itemAntes, USUARIO usuario);
         Int32 ValidateEdit(VAGA item, VAGA itemAntes);
         Int32 ValidateDelete(VAGA item, USUARIO usuario);

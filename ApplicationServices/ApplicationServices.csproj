@@ -159,6 +159,11 @@
     <Compile Include="Services\AgendaAppService.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\AssinanteAppService.cs" />
+    <Compile Include="Services\VagaAppService.cs" />
+    <Compile Include="Services\UnidadeAppService.cs" />
+    <Compile Include="Services\TorreAppService.cs" />
+    <Compile Include="Services\TipoUnidadeAppService.cs" />
+    <Compile Include="Services\CargoAppService.cs" />
     <Compile Include="Services\CategoriaAgendaAppService.cs" />
     <Compile Include="Services\CategoriaNotificacaoAppService.cs" />
     <Compile Include="Services\CategoriaTelefoneAppService.cs" />

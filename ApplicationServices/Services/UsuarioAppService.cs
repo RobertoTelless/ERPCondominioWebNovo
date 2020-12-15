@@ -30,9 +30,33 @@ namespace ApplicationServices.Services
             return _usuarioService.GetByEmail(email);
         }
 
+        public USUARIO CheckExist(USUARIO ag, Int32 idAss)
+        {
+            USUARIO item = _usuarioService.CheckExist(ag, idAss);
+            return item;
+        }
+
         public List<CATEGORIA_USUARIO> GetAllTipos(Int32 idAss)
         {
             List<CATEGORIA_USUARIO> lista = _usuarioService.GetAllTipos(idAss);
+            return lista;
+        }
+
+        public List<CARGO> GetAllCargos(Int32 idAss)
+        {
+            List<CARGO> lista = _usuarioService.GetAllCargos(idAss);
+            return lista;
+        }
+
+        public List<TORRE> GetAllTorres(Int32 idAss)
+        {
+            List<TORRE> lista = _usuarioService.GetAllTorres(idAss);
+            return lista;
+        }
+
+        public List<UNIDADE> GetAllUnidades(Int32 idAss)
+        {
+            List<UNIDADE> lista = _usuarioService.GetAllUnidades(idAss);
             return lista;
         }
 
@@ -61,9 +85,9 @@ namespace ApplicationServices.Services
             return _usuarioService.GetAllItens(idAss);
         }
 
-        public USUARIO GetAdministrador(Int32 idAss)
+        public USUARIO GetSindico(Int32 idAss)
         {
-            return _usuarioService.GetAdministrador(idAss);
+            return _usuarioService.GetSindico(idAss);
         }
 
         public List<NOTIFICACAO> GetAllItensUser(Int32 id, Int32 idAss)
@@ -128,20 +152,20 @@ namespace ApplicationServices.Services
                 }
 
                 // Verifica admissão e demissão
-                if (usuario.USUA_DT_ADMISSAO != null)
+                if (usuario.USUA_DT_ENTRADA != null)
                 {
-                    if (usuario.USUA_DT_ADMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_ENTRADA.Value > DateTime.Today.Date)
                     {
                         return 5;
                     }
                 }
-                if (usuario.USUA_DT_DEMISSAO != null)
+                if (usuario.USUA_DT_SAIDA != null)
                 {
-                    if (usuario.USUA_DT_DEMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_SAIDA.Value > DateTime.Today.Date)
                     {
                         return 6;
                     }
-                    if (usuario.USUA_DS_JUSTIFICATIVA_DEMISSAO == null)
+                    if (usuario.USUA_DS_MOTIVO_SAIDA == null)
                     {
                         return 7;
                     }
@@ -190,7 +214,7 @@ namespace ApplicationServices.Services
             try
             {
                 //Completa campos
-                USUARIO adm = _usuarioService.GetAdministrador(usuarioLogado.ASSI_CD_ID);
+                USUARIO adm = _usuarioService.GetSindico(usuarioLogado.ASSI_CD_ID);
                 noti.ASSI_CD_ID = usuarioLogado.ASSI_CD_ID;
                 noti.CANO_CD_ID = 1;
                 noti.NOTI_DT_EMISSAO = DateTime.Today.Date;
@@ -206,37 +230,37 @@ namespace ApplicationServices.Services
                 // Gera Notificação
                 Int32 volta = _notiService.Create(noti);
 
-                // Recupera template e-mail
-                String header = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_CABECALHO;
-                String body = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_CORPO;
-                String data = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_DADOS;
+                //// Recupera template e-mail
+                //String header = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_CABECALHO;
+                //String body = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_CORPO;
+                //String data = _usuarioService.GetTemplate("SOLCAD").TEMP_TX_DADOS;
 
-                // Prepara dados do e-mail  
-                header = header.Replace("{Nome}", adm.USUA_NM_NOME);
-                data = data.Replace("{Data}", DateTime.Today.Date.ToLongDateString());
-                data = data.Replace("{Usuario}", usuarioLogado.USUA_NM_NOME);
-                data = data.Replace("{Solicitacao}", noti.NOTI_TX_TEXTO);
+                //// Prepara dados do e-mail  
+                //header = header.Replace("{Nome}", adm.USUA_NM_NOME);
+                //data = data.Replace("{Data}", DateTime.Today.Date.ToLongDateString());
+                //data = data.Replace("{Usuario}", usuarioLogado.USUA_NM_NOME);
+                //data = data.Replace("{Solicitacao}", noti.NOTI_TX_TEXTO);
 
-                // Concatena
-                String emailBody = header + body + data;
+                //// Concatena
+                //String emailBody = header + body + data;
 
-                // Prepara e-mail e enviar
-                CONFIGURACAO conf = _usuarioService.CarregaConfiguracao(usuarioLogado.ASSI_CD_ID);
-                Email mensagem = new Email();
-                mensagem.ASSUNTO = "Solicitacao de Alteracao Cadastral";
-                mensagem.CORPO = emailBody;
-                mensagem.DEFAULT_CREDENTIALS = false;
-                mensagem.EMAIL_DESTINO = adm.USUA_NM_EMAIL;
-                mensagem.EMAIL_EMISSOR = conf.CONF_NM_EMAIL_EMISSOO;
-                mensagem.ENABLE_SSL = true;
-                mensagem.NOME_EMISSOR = "Sistema";
-                mensagem.PORTA = conf.CONF_NM_PORTA_SMTP;
-                mensagem.PRIORIDADE = System.Net.Mail.MailPriority.High;
-                mensagem.SENHA_EMISSOR = conf.CONF_NM_SENHA_EMISSOR;
-                mensagem.SMTP = conf.CONF_NM_HOST_SMTP;
+                //// Prepara e-mail e enviar
+                //CONFIGURACAO conf = _usuarioService.CarregaConfiguracao(usuarioLogado.ASSI_CD_ID);
+                //Email mensagem = new Email();
+                //mensagem.ASSUNTO = "Solicitacao de Alteracao Cadastral";
+                //mensagem.CORPO = emailBody;
+                //mensagem.DEFAULT_CREDENTIALS = false;
+                //mensagem.EMAIL_DESTINO = adm.USUA_NM_EMAIL;
+                //mensagem.EMAIL_EMISSOR = conf.CONF_NM_EMAIL_EMISSOO;
+                //mensagem.ENABLE_SSL = true;
+                //mensagem.NOME_EMISSOR = "Sistema";
+                //mensagem.PORTA = conf.CONF_NM_PORTA_SMTP;
+                //mensagem.PRIORIDADE = System.Net.Mail.MailPriority.High;
+                //mensagem.SENHA_EMISSOR = conf.CONF_NM_SENHA_EMISSOR;
+                //mensagem.SMTP = conf.CONF_NM_HOST_SMTP;
 
-                // Envia e-mail
-                Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
+                //// Envia e-mail
+                //Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
                 return volta;
             }
             catch (Exception ex)
@@ -274,20 +298,20 @@ namespace ApplicationServices.Services
                 }
 
                 // Verifica admissão e demissão
-                if (usuario.USUA_DT_ADMISSAO != null)
+                if (usuario.USUA_DT_ENTRADA != null)
                 {
-                    if (usuario.USUA_DT_ADMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_ENTRADA.Value > DateTime.Today.Date)
                     {
                         return 4;
                     }
                 }
-                if (usuario.USUA_DT_DEMISSAO != null)
+                if (usuario.USUA_DT_SAIDA != null)
                 {
-                    if (usuario.USUA_DT_DEMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_SAIDA.Value > DateTime.Today.Date)
                     {
                         return 5;
                     }
-                    if (usuario.USUA_DS_JUSTIFICATIVA_DEMISSAO == null)
+                    if (usuario.USUA_DS_MOTIVO_SAIDA == null)
                     {
                         return 6;
                     }
@@ -296,7 +320,7 @@ namespace ApplicationServices.Services
                 //Acerta campos de usuários
                 usuario.USUA_DT_ALTERACAO = DateTime.Now;
                 usuario.USUA_IN_ATIVO = 1;
-                if (usuario.USUA_DT_DEMISSAO != null)
+                if (usuario.USUA_DT_SAIDA != null)
                 {
                     usuario.USUA_IN_ATIVO = 0;
                     usuario.USUA_IN_BLOQUEADO = 1;
@@ -359,20 +383,20 @@ namespace ApplicationServices.Services
                 }
 
                 // Verifica admissão e demissão
-                if (usuario.USUA_DT_ADMISSAO != null)
+                if (usuario.USUA_DT_ENTRADA != null)
                 {
-                    if (usuario.USUA_DT_ADMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_ENTRADA.Value > DateTime.Today.Date)
                     {
                         return 4;
                     }
                 }
-                if (usuario.USUA_DT_DEMISSAO != null)
+                if (usuario.USUA_DT_SAIDA != null)
                 {
-                    if (usuario.USUA_DT_DEMISSAO.Value > DateTime.Today.Date)
+                    if (usuario.USUA_DT_SAIDA.Value > DateTime.Today.Date)
                     {
                         return 5;
                     }
-                    if (usuario.USUA_DS_JUSTIFICATIVA_DEMISSAO == null)
+                    if (usuario.USUA_DS_MOTIVO_SAIDA == null)
                     {
                         return 6;
                     }
@@ -398,6 +422,7 @@ namespace ApplicationServices.Services
             try
             {
                 // Verifica integridade
+
 
                 // Acerta campos de usuários
                 usuario.USUA_DT_ALTERACAO = DateTime.Now;
@@ -783,7 +808,7 @@ namespace ApplicationServices.Services
             return 0;
         }
 
-        public Int32 ExecuteFilter(Int32? causId, String cargo, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto)
+        public Int32 ExecuteFilter(Int32? causId, Int32? cargo, Int32? unidade, String nome, String login, String email, String cpf, Int32 idAss, out List<USUARIO> objeto)
         {
             try
             {
@@ -791,7 +816,7 @@ namespace ApplicationServices.Services
                 Int32 volta = 0;
 
                 // Processa filtro
-                objeto = _usuarioService.ExecuteFilter(causId, cargo, nome, login, email, cpf, idAss);
+                objeto = _usuarioService.ExecuteFilter(causId, cargo, unidade, nome, login, email, cpf, idAss);
                 if (objeto.Count == 0)
                 {
                     volta = 1;
