@@ -559,9 +559,10 @@ namespace ERP_Condominio_Presentation.Controllers
                     Session["ListaNotificacao"] = null;
                     Session["VoltaNotificacao"] = 1;
                     Session["IdNotificacaoVolta"] = item.NOTI_CD_ID;
+                    Session["IdVolta"] = item.NOTI_CD_ID;
                     Session["Notificacao"] = item;
                     Session["MensNotificacao"] = 0;
-                    return RedirectToAction("MontarTelaNotificacaoGeral");
+                    return RedirectToAction("VoltarAnexoNotificacaoGeral");
                 }
                 catch (Exception ex)
                 {

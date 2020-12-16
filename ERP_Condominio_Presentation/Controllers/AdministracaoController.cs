@@ -1646,8 +1646,50 @@ namespace ERP_Condominio_Presentation.Controllers
         //    }
         //}
 
+        [HttpGet]
+        public ActionResult MontarTelaPerfilUsuario()
+        {
+            // Carrega listas
+            USUARIO usuario = (USUARIO)Session["UserCredentials"];
+            ViewBag.Perfil = usuario.PERFIL.PERF_SG_SIGLA;
+            ViewBag.Title = "Usuário";
 
+            // Abre view
+            USUARIO usu = baseApp.GetItemById(usuario.USUA_CD_ID);
+            objetoAntes = usu;
+            UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(usu);
+            return View(vm);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MontarTelaPerfilUsuario(UsuarioViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Executa a operação
+                    USUARIO usuarioLogado = (USUARIO)Session["UserCredentials"];
+                    USUARIO item = Mapper.Map<UsuarioViewModel, USUARIO>(vm);
+                    Int32 volta = baseApp.ValidateEdit(item, objetoAntes, usuarioLogado);
 
+                    // Verifica retorno
+
+                    // Sucesso
+                    Session["UserCredentials"] = item;
+                    return RedirectToAction("MontarTelaPerfilUsuario");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message;
+                    return View(vm);
+                }
+            }
+            else
+            {
+                return View(vm);
+            }
+        }
     }
 }
