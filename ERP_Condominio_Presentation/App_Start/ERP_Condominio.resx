@@ -156,6 +156,9 @@
   <data name="M0013" xml:space="preserve">
     <value>E-Mail inválido</value>
   </data>
+  <data name="M0014" xml:space="preserve">
+    <value>Já existe um usuário responsável por essa unidade</value>
+  </data>
   <data name="M0016" xml:space="preserve">
     <value>Nenhum registro atendeu às condições do filtro especificado</value>
   </data>

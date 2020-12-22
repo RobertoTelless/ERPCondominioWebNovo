@@ -45,6 +45,11 @@ namespace ModelServices.EntitiesServices
             return _baseRepository.GetAllItens(id.Value);
         }
 
+        public List<UNIDADE> GetAllItensAssinante(Int32 id)
+        {
+            return _baseRepository.GetAllItensAssinante(id);
+        }
+
         public List<UNIDADE> GetAllItensAdm(Int32? id)
         {
             return _baseRepository.GetAllItensAdm(id.Value);

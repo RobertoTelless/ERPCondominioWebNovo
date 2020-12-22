@@ -20,5 +20,6 @@ namespace ModelServices.Interfaces.Repositories
         List<USUARIO> GetAllUsuariosAdm(Int32 idAss);
         List<USUARIO> ExecuteFilter(Int32? causId, Int32? cargId, Int32? unidId, String nome, String login, String email, String cpf, Int32 idAss);
         USUARIO GetSindico(Int32 idAss);
+        USUARIO GetResponsavel(USUARIO usu);
     }
 }

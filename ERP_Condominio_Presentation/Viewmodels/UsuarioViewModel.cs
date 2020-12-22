@@ -38,7 +38,6 @@ namespace ERP_Condominio.ViewModels
         [StringLength(50, ErrorMessage = "O WHATSAPP deve ter no máximo 50 caracteres.")]
         public string USUA_NR_WHATSAPP { get; set; }
         public Nullable<int> USUA_IN_RESPONSAVEL { get; set; }
-        [Required(ErrorMessage = "Campo SENHA obrigatorio")]
         [StringLength(10, MinimumLength = 1, ErrorMessage = "A SENHA deve ter no minimo 1 e no máximo 10 caracteres.")]
         public string USUA_NM_SENHA { get; set; }
         [StringLength(10, ErrorMessage = "A SENHA deve ter no máximo 10 caracteres.")]
@@ -122,6 +121,21 @@ namespace ERP_Condominio.ViewModels
             set
             {
                 USUA_IN_PROVISORIO = (value == true) ? 1 : 0;
+            }
+        }
+        public bool Responsavel
+        {
+            get
+            {
+                if (USUA_IN_RESPONSAVEL == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+            set
+            {
+                USUA_IN_RESPONSAVEL = (value == true) ? 1 : 0;
             }
         }
 

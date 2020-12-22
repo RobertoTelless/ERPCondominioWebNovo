@@ -90,6 +90,11 @@ namespace ApplicationServices.Services
             return _usuarioService.GetSindico(idAss);
         }
 
+        public USUARIO GetResponsavel(USUARIO usu)
+        {
+            return _usuarioService.GetResponsavel(usu);
+        }
+
         public List<NOTIFICACAO> GetAllItensUser(Int32 id, Int32 idAss)
         {
             return _usuarioService.GetAllItensUser(id, idAss);
@@ -170,8 +175,18 @@ namespace ApplicationServices.Services
                         return 7;
                     }
                 }
+                if (usuario.USUA_IN_RESPONSAVEL == 1)
+                {
+                    if (_usuarioService.GetResponsavel(usuario) != null)
+                    {
+                        return 8;
+                    }
+                }
 
                 //Completa campos de usuários
+                String senha = Cryptography.GenerateRandomPassword(6);
+                usuario.USUA_NM_SENHA = senha;
+                usuario.USUA_NM_LOGIN = usuario.USUA_NM_NOME.Substring(0, 4);
                 //usuario.USUA_NM_SENHA = Cryptography.Encode(usuario.USUA_NM_SENHA);
                 usuario.USUA_IN_BLOQUEADO = 0;
                 usuario.USUA_IN_PROVISORIO = 0;
@@ -186,6 +201,9 @@ namespace ApplicationServices.Services
                 usuario.USUA_IN_ATIVO = 1;
                 usuario.USUA_DT_ULTIMA_FALHA = DateTime.Now;
                 usuario.ASSI_CD_ID = usuarioLogado.ASSI_CD_ID;
+                usuario.USUA_DS_MOTIVO_SAIDA = null;
+                usuario.USUA_IN_LOGADO = 0;
+                usuario.USUA_NR_MATRICULA = null;
 
                 // Monta Log
                 LOG log = new LOG
@@ -198,9 +216,58 @@ namespace ApplicationServices.Services
                     LOG_IN_ATIVO = 1
                 };
 
-
                 // Persiste
                 Int32 volta = _usuarioService.CreateUser(usuario, log);
+
+                // Gerar Notificação
+                NOTIFICACAO noti = new NOTIFICACAO();
+                noti.CANO_CD_ID = 1;
+                noti.ASSI_CD_ID = usuario.ASSI_CD_ID;
+                noti.NOTI_DT_EMISSAO = DateTime.Today;
+                noti.NOTI_DT_VALIDADE = DateTime.Today.Date.AddDays(30);
+                noti.NOTI_IN_VISTA = 0;
+                noti.NOTI_NM_TITULO = "Criação de Usuário";
+                noti.NOTI_IN_ATIVO = 1;
+                noti.NOTI_IN_NIVEL = 1;
+                noti.NOTI_TX_TEXTO = "ATENÇÃO: Usuário" + usuario.USUA_NM_NOME + " criado em " + DateTime.Today.Date.ToLongDateString() + ". Perfil: " + usuario.PERFIL.PERF_NM_NOME + ". Login: " + usuario.USUA_NM_LOGIN + ". Senha: " + usuario.USUA_NM_SENHA + ". Essa senha é provisória e poderá ser usada apenas uma vez, devendo ser alterada após o primeiro login.";
+                noti.USUA_CD_ID = usuario.USUA_CD_ID;
+                noti.NOTI_IN_STATUS = 1;
+                Int32 volta1 = _notiService.Create(noti);
+
+                // Recupera template e-mail
+                TEMPLATE template = _usuarioService.GetTemplate("NEWUSR");
+                String header = template.TEMP_TX_CABECALHO;
+                String body = template.TEMP_TX_CORPO;
+                String data = template.TEMP_TX_DADOS;
+
+                // Prepara dados do e-mail  
+                data = data.Replace("{Nome}", usuario.USUA_NM_NOME);
+                data = data.Replace("{Unidade}", usuario.UNIDADE.UNID_NM_EXIBE);
+                data = data.Replace("{Perfil}", usuario.PERFIL.PERF_NM_NOME);
+                data = data.Replace("{Data}", usuario.USUA_DT_CADASTRO.Value.ToLongDateString());
+                data = data.Replace("{Login}", usuario.USUA_NM_LOGIN);
+                data = data.Replace("{Senha}", usuario.USUA_NM_SENHA);
+
+                // Concatena
+                String emailBody = header + body + data;
+
+                // Prepara e-mail e enviar
+                CONFIGURACAO conf = _usuarioService.CarregaConfiguracao(usuario.ASSI_CD_ID);
+                Email mensagem = new Email();
+                mensagem.ASSUNTO = "Inclusão de Usuário";
+                mensagem.CORPO = emailBody;
+                mensagem.DEFAULT_CREDENTIALS = false;
+                mensagem.EMAIL_DESTINO = usuario.USUA_NM_EMAIL;
+                mensagem.EMAIL_EMISSOR = conf.CONF_NM_EMAIL_EMISSOO;
+                mensagem.ENABLE_SSL = true;
+                mensagem.NOME_EMISSOR = "Sistema";
+                mensagem.PORTA = conf.CONF_NM_PORTA_SMTP;
+                mensagem.PRIORIDADE = System.Net.Mail.MailPriority.High;
+                mensagem.SENHA_EMISSOR = conf.CONF_NM_SENHA_EMISSOR;
+                mensagem.SMTP = conf.CONF_NM_HOST_SMTP;
+
+                // Envia e-mail
+                Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
                 return volta;
             }
             catch (Exception ex)
@@ -399,6 +466,15 @@ namespace ApplicationServices.Services
                     if (usuario.USUA_DS_MOTIVO_SAIDA == null)
                     {
                         return 6;
+                    }
+                }
+
+                // Verifica responsavel
+                if (usuario.USUA_IN_RESPONSAVEL == 1)
+                {
+                    if (_usuarioService.GetResponsavel(usuario) != null)
+                    {
+                        return 7;
                     }
                 }
 

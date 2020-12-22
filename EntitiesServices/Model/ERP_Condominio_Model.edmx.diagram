@@ -183,6 +183,7 @@
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_CONTROLE_ENTRADA_USUARIO" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_VEICULO_VAGA" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_VEICULO_ANEXO_VEICULO" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_UNIDADE_ASSINANTE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

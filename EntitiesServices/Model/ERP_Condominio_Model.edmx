@@ -803,9 +803,12 @@
           <Property Name="UNID_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TORR_CD_ID" Type="int" Nullable="false" />
           <Property Name="TIUN_CD_ID" Type="int" Nullable="false" />
+          <Property Name="ASSI_CD_ID" Type="int" />
           <Property Name="UNID_NR_NUMERO" Type="varchar" MaxLength="10" />
           <Property Name="UNID_IN_ATIVO" Type="int" />
           <Property Name="UNID_IN_ALUGADA" Type="int" />
+          <Property Name="UNID_NM_NOME_TORRE" Type="varchar" MaxLength="50" />
+          <Property Name="UNID_NM_EXIBE" Type="varchar" MaxLength="63" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -2055,6 +2058,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UNIDADE_ASSINANTE">
+          <End Role="ASSINANTE" Type="Self.ASSINANTE" Multiplicity="0..1" />
+          <End Role="UNIDADE" Type="Self.UNIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASSINANTE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Principal>
+            <Dependent Role="UNIDADE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UNIDADE_TIPO_UNIDADE">
           <End Role="TIPO_UNIDADE" Type="Self.TIPO_UNIDADE" Multiplicity="1" />
           <End Role="UNIDADE" Type="Self.UNIDADE" Multiplicity="*" />
@@ -2684,6 +2699,10 @@
             <End Role="ASSINANTE" EntitySet="ASSINANTE" />
             <End Role="TORRE" EntitySet="TORRE" />
           </AssociationSet>
+          <AssociationSet Name="FK_UNIDADE_ASSINANTE" Association="Self.FK_UNIDADE_ASSINANTE">
+            <End Role="ASSINANTE" EntitySet="ASSINANTE" />
+            <End Role="UNIDADE" EntitySet="UNIDADE" />
+          </AssociationSet>
           <AssociationSet Name="FK_UNIDADE_TIPO_UNIDADE" Association="Self.FK_UNIDADE_TIPO_UNIDADE">
             <End Role="TIPO_UNIDADE" EntitySet="TIPO_UNIDADE" />
             <End Role="UNIDADE" EntitySet="UNIDADE" />
@@ -2850,6 +2869,7 @@
           <NavigationProperty Name="RESERVA" Relationship="ERP_Condominio_DBModel.FK_RESERVA_ASSINANTE" FromRole="ASSINANTE" ToRole="RESERVA" />
           <NavigationProperty Name="SOLICITACAO_MUDANCA" Relationship="ERP_Condominio_DBModel.FK_SOLICITACAO_MUDANCA_ASSINANTE" FromRole="ASSINANTE" ToRole="SOLICITACAO_MUDANCA" />
           <NavigationProperty Name="VEICULO" Relationship="ERP_Condominio_DBModel.FK_VEICULO_ASSINANTE" FromRole="ASSINANTE" ToRole="VEICULO" />
+          <NavigationProperty Name="UNIDADE" Relationship="ERP_Condominio_DBModel.FK_UNIDADE_ASSINANTE" FromRole="ASSINANTE" ToRole="UNIDADE" />
         </EntityType>
         <EntityType Name="CARGO">
           <Key>
@@ -3241,6 +3261,10 @@
           <NavigationProperty Name="RESERVA" Relationship="ERP_Condominio_DBModel.FK_RESERVA_UNIDADE" FromRole="UNIDADE" ToRole="RESERVA" />
           <NavigationProperty Name="SOLICITACAO_MUDANCA" Relationship="ERP_Condominio_DBModel.FK_SOLICITACAO_MUDANCA_UNIDADE" FromRole="UNIDADE" ToRole="SOLICITACAO_MUDANCA" />
           <NavigationProperty Name="VEICULO" Relationship="ERP_Condominio_DBModel.FK_VEICULO_UNIDADE" FromRole="UNIDADE" ToRole="VEICULO" />
+          <Property Name="ASSI_CD_ID" Type="Int32" />
+          <Property Name="UNID_NM_NOME_TORRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UNID_NM_EXIBE" Type="String" MaxLength="63" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="ASSINANTE" Relationship="ERP_Condominio_DBModel.FK_UNIDADE_ASSINANTE" FromRole="UNIDADE" ToRole="ASSINANTE" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -4469,6 +4493,10 @@
           <AssociationSet Name="FK_VEICULO_ANEXO_VEICULO" Association="ERP_Condominio_DBModel.FK_VEICULO_ANEXO_VEICULO">
             <End Role="VEICULO" EntitySet="VEICULO" />
             <End Role="VEICULO_ANEXO" EntitySet="VEICULO_ANEXO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UNIDADE_ASSINANTE" Association="ERP_Condominio_DBModel.FK_UNIDADE_ASSINANTE">
+            <End Role="ASSINANTE" EntitySet="ASSINANTE" />
+            <End Role="UNIDADE" EntitySet="UNIDADE" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AMBIENTE">
@@ -5709,6 +5737,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UNIDADE_ASSINANTE">
+          <End Type="ERP_Condominio_DBModel.ASSINANTE" Role="ASSINANTE" Multiplicity="0..1" />
+          <End Type="ERP_Condominio_DBModel.UNIDADE" Role="UNIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ASSINANTE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Principal>
+            <Dependent Role="UNIDADE">
+              <PropertyRef Name="ASSI_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6121,6 +6161,9 @@
           <EntitySetMapping Name="UNIDADE">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.UNIDADE">
               <MappingFragment StoreEntitySet="UNIDADE">
+                <ScalarProperty Name="UNID_NM_EXIBE" ColumnName="UNID_NM_EXIBE" />
+                <ScalarProperty Name="UNID_NM_NOME_TORRE" ColumnName="UNID_NM_NOME_TORRE" />
+                <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="UNID_CD_ID" ColumnName="UNID_CD_ID" />
                 <ScalarProperty Name="TORR_CD_ID" ColumnName="TORR_CD_ID" />
                 <ScalarProperty Name="TIUN_CD_ID" ColumnName="TIUN_CD_ID" />

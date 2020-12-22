@@ -36,6 +36,9 @@ namespace EntitiesServices.Model
         public string UNID_NR_NUMERO { get; set; }
         public Nullable<int> UNID_IN_ATIVO { get; set; }
         public Nullable<int> UNID_IN_ALUGADA { get; set; }
+        public Nullable<int> ASSI_CD_ID { get; set; }
+        public string UNID_NM_NOME_TORRE { get; set; }
+        public string UNID_NM_EXIBE { get; set; }
     
         public virtual TIPO_UNIDADE TIPO_UNIDADE { get; set; }
         public virtual TORRE TORRE { get; set; }
@@ -61,5 +64,6 @@ namespace EntitiesServices.Model
         public virtual ICollection<SOLICITACAO_MUDANCA> SOLICITACAO_MUDANCA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEICULO> VEICULO { get; set; }
+        public virtual ASSINANTE ASSINANTE { get; set; }
     }
 }

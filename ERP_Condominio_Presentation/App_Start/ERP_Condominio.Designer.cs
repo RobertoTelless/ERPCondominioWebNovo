@@ -29,7 +29,7 @@ namespace ERP_Condominio_Presentation.App_Start {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ERP_Condominio_Resources() {
+        internal ERP_Condominio() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ERP_Condominio_Presentation.App_Start {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_Condominio_Presentation.App_Start.ERP_Condominio", typeof(ERP_Condominio_Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_Condominio_Presentation.App_Start.ERP_Condominio", typeof(ERP_Condominio).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -174,6 +174,15 @@ namespace ERP_Condominio_Presentation.App_Start {
         internal static string M0013 {
             get {
                 return ResourceManager.GetString("M0013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um usuário responsável por essa unidade.
+        /// </summary>
+        internal static string M0014 {
+            get {
+                return ResourceManager.GetString("M0014", resourceCulture);
             }
         }
         

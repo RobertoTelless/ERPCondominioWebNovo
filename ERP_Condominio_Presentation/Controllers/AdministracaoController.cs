@@ -90,7 +90,9 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.UsuariosHoje = lista.Where(p => p.USUA_IN_BLOQUEADO == 0 & p.USUA_DT_ACESSO == DateTime.Today.Date).ToList().Count;
             ViewBag.Title = "Usuários";
             ViewBag.Perfil = usuario.PERFIL.PERF_SG_SIGLA;
-            ViewBag.Tipos = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
+            ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
 
             // Recupera numero de usuarios do assinante
             Session["NumUsuarios"] = baseApp.GetAllUsuarios(idAss).Count;
@@ -222,7 +224,9 @@ namespace ERP_Condominio_Presentation.Controllers
 
             // Prepara listas
             ViewBag.Perfis = new SelectList((List<PERFIL>)Session["Perfis"], "PERF_CD_ID", "PERF_NM_NOME");
-            ViewBag.Tipos = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
+            ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
 
             // Prepara view
             USUARIO item = new USUARIO();
@@ -242,7 +246,9 @@ namespace ERP_Condominio_Presentation.Controllers
             }
             Int32 idAss = (Int32)Session["IdAssinante"];
             ViewBag.Perfis = new SelectList((List<PERFIL>)Session["Perfis"], "PERF_CD_ID", "PERF_NM_NOME");
-            ViewBag.Tipos = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
+            ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
             if (ModelState.IsValid)
             {
                 try
@@ -286,6 +292,11 @@ namespace ERP_Condominio_Presentation.Controllers
                     if (volta == 7)
                     {
                         ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0029", CultureInfo.CurrentCulture));
+                        return View(vm);
+                    }
+                    if (volta == 8)
+                    {
+                        ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0014", CultureInfo.CurrentCulture));
                         return View(vm);
                     }
 
@@ -347,7 +358,9 @@ namespace ERP_Condominio_Presentation.Controllers
 
             // Prepara view
             ViewBag.Perfis = new SelectList((List<PERFIL>)Session["Perfis"], "PERF_CD_ID", "PERF_NM_NOME");
-            ViewBag.Tipos = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
+            ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
 
             USUARIO item = baseApp.GetItemById(id);
             objetoAntes = item;
@@ -367,7 +380,9 @@ namespace ERP_Condominio_Presentation.Controllers
             }
             Int32 idAss = (Int32)Session["IdAssinante"];
             ViewBag.Perfis = new SelectList((List<PERFIL>)Session["Perfis"], "PERF_CD_ID", "PERF_NM_NOME");
-            ViewBag.Tipos = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
+            ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
+            ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
             if (ModelState.IsValid)
             {
                 try
@@ -406,6 +421,11 @@ namespace ERP_Condominio_Presentation.Controllers
                     if (volta == 6)
                     {
                         ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0029", CultureInfo.CurrentCulture));
+                        return View(vm);
+                    }
+                    if (volta == 7)
+                    {
+                        ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0014", CultureInfo.CurrentCulture));
                         return View(vm);
                     }
 

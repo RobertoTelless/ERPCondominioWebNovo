@@ -32,6 +32,13 @@ namespace DataServices.Repositories
             return query.ToList();
         }
 
+        public List<UNIDADE> GetAllItensAssinante(Int32 idAss)
+        {
+            IQueryable<UNIDADE> query = Db.UNIDADE.Where(p => p.UNID_IN_ATIVO == 1);
+            query = query.Where(p => p.ASSI_CD_ID == idAss);
+            return query.ToList();
+        }
+
         public List<UNIDADE> GetAllItensAdm(Int32 idAss)
         {
             IQueryable<UNIDADE> query = Db.UNIDADE;

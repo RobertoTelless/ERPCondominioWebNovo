@@ -57,6 +57,17 @@ namespace DataServices.Repositories
             return query.FirstOrDefault();
         }
 
+        public USUARIO GetResponsavel(USUARIO usu)
+        {
+            IQueryable<USUARIO> query = Db.USUARIO.Where(p => p.USUA_IN_ATIVO == 1);
+            query = query.Where(p => p.USUA_IN_RESPONSAVEL == 1);
+            query = query.Where(p => p.UNID_CD_ID == usu.UNID_CD_ID);
+            query = query.Where(p => p.USUA_NM_NOME == usu.USUA_NM_NOME);
+            query = query.Include(p => p.ASSINANTE);
+            query = query.Include(p => p.PERFIL);
+            return query.FirstOrDefault();
+        }
+
         public List<USUARIO> GetAllItens(Int32 idAss)
         {
             IQueryable<USUARIO> query = Db.USUARIO.Where(p => p.USUA_IN_ATIVO == 1);
@@ -128,7 +139,7 @@ namespace DataServices.Repositories
             }
             if (cargoId != null)
             {
-                query = query.Where(p => p.CARG_CD_ID == causId);
+                query = query.Where(p => p.PERF_CD_ID == causId);
             }
             if (unidId != null)
             {
@@ -136,7 +147,7 @@ namespace DataServices.Repositories
             }
             if (!String.IsNullOrEmpty(cpf))
             {
-                query = query.Where(p => p.USUA_NR_CPF == cpf);
+                query = query.Where(p => p.USUA_NR_CPF.Contains(cpf));
             }
             if (query != null)
             {

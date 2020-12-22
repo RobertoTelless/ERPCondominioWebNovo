@@ -75,7 +75,7 @@ namespace ModelServices.EntitiesServices
 
         public List<UNIDADE> GetAllUnidades(Int32 idAss)
         {
-            return _uniRepository.GetAllItens(idAss);
+            return _uniRepository.GetAllItensAssinante(idAss);
         }
 
         public List<TORRE> GetAllTorres(Int32 idAss)
@@ -145,6 +145,11 @@ namespace ModelServices.EntitiesServices
         public USUARIO GetSindico(Int32 idAss)
         {
             return _usuarioRepository.GetSindico(idAss);
+        }
+
+        public USUARIO GetResponsavel(USUARIO usu)
+        {
+            return _usuarioRepository.GetResponsavel(usu);
         }
 
         public List<USUARIO> GetAllItensAcessoHoje(Int32 idAss)

@@ -13,5 +13,6 @@ namespace ModelServices.Interfaces.Repositories
         UNIDADE GetItemById(Int32 id);
         List<UNIDADE> GetAllItens(Int32 idAss);
         List<UNIDADE> GetAllItensAdm(Int32 idAss);
+        List<UNIDADE> GetAllItensAssinante(Int32 idAss);
     }
 }

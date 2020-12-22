@@ -42,5 +42,6 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<CARGO> GetAllCargos(Int32 idAss);
         List<UNIDADE> GetAllUnidades(Int32 idAss);
         List<TORRE> GetAllTorres(Int32 idAss);
+        USUARIO GetResponsavel(USUARIO usu);
     }
 }

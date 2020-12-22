@@ -48,6 +48,7 @@ namespace EntitiesServices.Model
             this.RESERVA = new HashSet<RESERVA>();
             this.SOLICITACAO_MUDANCA = new HashSet<SOLICITACAO_MUDANCA>();
             this.VEICULO = new HashSet<VEICULO>();
+            this.UNIDADE = new HashSet<UNIDADE>();
         }
     
         public int ASSI_CD_ID { get; set; }
@@ -132,5 +133,7 @@ namespace EntitiesServices.Model
         public virtual ICollection<SOLICITACAO_MUDANCA> SOLICITACAO_MUDANCA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEICULO> VEICULO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UNIDADE> UNIDADE { get; set; }
     }
 }

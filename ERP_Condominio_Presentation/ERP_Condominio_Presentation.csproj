@@ -2465,6 +2465,7 @@
     <Content Include="Scripts\plugins\video\responsible-video.js" />
     <Content Include="Scripts\plugins\wow\wow.min.js" />
     <Content Include="Scripts\UploadAnexo.js" />
+    <Content Include="Views\Administracao\MontarTelaUsuario.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2500,7 +2501,6 @@
     <Content Include="Views\ControleAcesso\GerarSenha.cshtml" />
     <Content Include="Views\BaseAdmin\CarregarBase.cshtml" />
     <Content Include="Views\BaseAdmin\CarregarDesenvolvimento.cshtml" />
-    <Content Include="Views\Administracao\MontarTelaUsuario.cshtml" />
     <Content Include="Views\Administracao\VerUsuario.cshtml" />
     <Content Include="Views\Administracao\IncluirUsuario.cshtml" />
     <Content Include="Views\Administracao\EditarUsuario.cshtml" />
