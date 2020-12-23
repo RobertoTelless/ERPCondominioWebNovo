@@ -136,6 +136,10 @@
     <Compile Include="Repositories\AgendaRepository.cs" />
     <Compile Include="Repositories\AgendaVinculoRepository.cs" />
     <Compile Include="Repositories\AssinanteRepository.cs" />
+    <Compile Include="Repositories\CategoriaFornecedorRepository.cs" />
+    <Compile Include="Repositories\FuncaoCorpoDiretivoRepository.cs" />
+    <Compile Include="Repositories\CorpoDiretivoRepository.cs" />
+    <Compile Include="Repositories\FornecedorRepository.cs" />
     <Compile Include="Repositories\VagaRepository.cs" />
     <Compile Include="Repositories\UnidadeRepository.cs" />
     <Compile Include="Repositories\TorreRepository.cs" />

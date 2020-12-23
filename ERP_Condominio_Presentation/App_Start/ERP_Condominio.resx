@@ -145,10 +145,10 @@
     <value>A nova senha não foi confirmada corretamente</value>
   </data>
   <data name="M0010" xml:space="preserve">
-    <value>Apenas um Administador pode executar essa operação</value>
+    <value>Apenas um Administador, Síndico ou Membro do Corpo Diretivo pode executar essa operação</value>
   </data>
   <data name="M0011" xml:space="preserve">
-    <value>Você não tem acesso a essa funcionalidade. Restrita a administradores</value>
+    <value>Você não tem acesso a essa funcionalidade. Restrita a administradores, Síndico e Membros do Corpo Diretivo</value>
   </data>
   <data name="M0012" xml:space="preserve">
     <value>Confirmação de senha inválida</value>

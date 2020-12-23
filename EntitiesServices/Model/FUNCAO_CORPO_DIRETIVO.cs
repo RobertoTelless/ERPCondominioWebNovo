@@ -24,6 +24,7 @@ namespace EntitiesServices.Model
         public string FUCO_NM_NOME { get; set; }
         public Nullable<int> ASSI_CD_ID { get; set; }
         public Nullable<int> FUCO_IN_ORDEM { get; set; }
+        public Nullable<int> FUCO_IN_ATIVO { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

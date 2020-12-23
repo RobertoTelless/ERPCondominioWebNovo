@@ -16,53 +16,62 @@ using System.Data;
 
 namespace ModelServices.EntitiesServices
 {
-    public class UnidadeService : ServiceBase<UNIDADE>, IUnidadeService
+    public class FornecedorService : ServiceBase<FORNECEDOR>, IFornecedorService
     {
-        private readonly IUnidadeRepository _baseRepository;
+        private readonly IFornecedorRepository _baseRepository;
         private readonly ILogRepository _logRepository;
-        private readonly ITipoUnidadeRepository _tuRepository;
+        private readonly ICategoriaFornecedorRepository _catRepository;
+        private readonly IUFRepository _ufRepository;
+        private readonly ITipoPessoaRepository _tpRepository;
         protected ERP_Condominio_DBEntities Db = new ERP_Condominio_DBEntities();
 
-        public UnidadeService(IUnidadeRepository baseRepository, ILogRepository logRepository, ITipoUnidadeRepository tuRepository) : base(baseRepository)
+        public FornecedorService(IFornecedorRepository baseRepository, ILogRepository logRepository, ICategoriaFornecedorRepository catRepository, IUFRepository ufRepository, ITipoPessoaRepository tpRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
-            _tuRepository = tuRepository;
+            _catRepository = catRepository;
+            _ufRepository = ufRepository;
+            _tpRepository = tpRepository;
         }
 
-        public UNIDADE GetItemById(Int32 id)
+        public FORNECEDOR GetItemById(Int32 id)
         {
-            UNIDADE item = _baseRepository.GetItemById(id);
+            FORNECEDOR item = _baseRepository.GetItemById(id);
             return item;
         }
 
-        public UNIDADE CheckExist(UNIDADE item, Int32? idAss)
+        public List<FORNECEDOR> GetAllItens(Int32 idAss)
         {
-            UNIDADE volta = _baseRepository.CheckExist(item, idAss);
-            return volta;
+            return _baseRepository.GetAllItens(idAss);
         }
 
-        public List<UNIDADE> GetAllItens(Int32? id)
+        public List<FORNECEDOR> GetAllItensAdm(Int32 idAss)
         {
-            return _baseRepository.GetAllItens(id.Value);
+            return _baseRepository.GetAllItensAdm(idAss);
         }
 
-        public List<TIPO_UNIDADE> GetAllTipos(Int32? id)
+        public List<CATEGORIA_FORNECEDOR> GetAllCategorias(Int32 idAss)
         {
-            return _tuRepository.GetAllItens(id.Value);
+            return _catRepository.GetAllItens(idAss);
         }
 
-        public List<UNIDADE> GetAllItensAssinante(Int32 id)
+        public List<UF> GetAllUFs()
         {
-            return _baseRepository.GetAllItensAssinante(id);
+            return _ufRepository.GetAllItens();
         }
 
-        public List<UNIDADE> GetAllItensAdm(Int32? id)
+        public List<TIPO_PESSOA> GetAllTipoPessoa()
         {
-            return _baseRepository.GetAllItensAdm(id.Value);
+            return _tpRepository.GetAllItens();
         }
-    
-        public Int32 Create(UNIDADE item, LOG log)
+
+        public List<FORNECEDOR> ExecuteFilter(Int32? cat, String nome, String telefone, String descricao, String escopo, Int32 idAss)
+        {
+            return _baseRepository.ExecuteFilter(cat, nome, telefone, descricao, escopo, idAss);
+
+        }
+
+        public Int32 Create(FORNECEDOR item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -81,7 +90,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Create(UNIDADE item)
+        public Int32 Create(FORNECEDOR item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -100,13 +109,13 @@ namespace ModelServices.EntitiesServices
         }
 
 
-        public Int32 Edit(UNIDADE item, LOG log)
+        public Int32 Edit(FORNECEDOR item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    UNIDADE obj = _baseRepository.GetById(item.UNID_CD_ID);
+                    FORNECEDOR obj = _baseRepository.GetById(item.FORN_CD_ID);
                     _baseRepository.Detach(obj);
                     _logRepository.Add(log);
                     _baseRepository.Update(item);
@@ -121,13 +130,13 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Edit(UNIDADE item)
+        public Int32 Edit(FORNECEDOR item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    UNIDADE obj = _baseRepository.GetById(item.UNID_CD_ID);
+                    FORNECEDOR obj = _baseRepository.GetById(item.FORN_CD_ID);
                     _baseRepository.Detach(obj);
                     _baseRepository.Update(item);
                     transaction.Commit();
@@ -141,7 +150,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Delete(UNIDADE item, LOG log)
+        public Int32 Delete(FORNECEDOR item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -159,6 +168,5 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
-
     }
 }

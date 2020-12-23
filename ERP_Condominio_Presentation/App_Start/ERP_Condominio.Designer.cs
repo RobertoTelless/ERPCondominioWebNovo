@@ -142,7 +142,7 @@ namespace ERP_Condominio_Presentation.App_Start {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Apenas um Administador pode executar essa operação.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Apenas um Administador, Síndico ou Membro do Corpo Diretivo pode executar essa operação.
         /// </summary>
         internal static string M0010 {
             get {
@@ -151,7 +151,7 @@ namespace ERP_Condominio_Presentation.App_Start {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Você não tem acesso a essa funcionalidade. Restrita a administradores.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Você não tem acesso a essa funcionalidade. Restrita a administradores, Síndico e Membros do Corpo Diretivo.
         /// </summary>
         internal static string M0011 {
             get {

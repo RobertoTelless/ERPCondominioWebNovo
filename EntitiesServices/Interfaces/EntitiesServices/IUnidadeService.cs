@@ -21,5 +21,6 @@ namespace ModelServices.Interfaces.EntitiesServices
         UNIDADE GetItemById(Int32 id);
         List<UNIDADE> GetAllItensAdm(Int32? idAss);
         List<UNIDADE> GetAllItensAssinante(Int32 idAss);
+        List<TIPO_UNIDADE> GetAllTipos(Int32? idAss);
     }
 }

@@ -21,14 +21,14 @@ namespace DataServices.Repositories
         {
             IQueryable<UNIDADE> query = Db.UNIDADE;
             query = query.Where(p => p.UNID_NR_NUMERO == item.UNID_NR_NUMERO);
-            query = query.Where(p => p.TORR_CD_ID == item.TORR_CD_ID);
+            query = query.Where(p => p.ASSI_CD_ID == item.ASSI_CD_ID);
             return query.FirstOrDefault();
         }
 
         public List<UNIDADE> GetAllItens(Int32 idAss)
         {
             IQueryable<UNIDADE> query = Db.UNIDADE.Where(p => p.UNID_IN_ATIVO == 1);
-            query = query.Where(p => p.TORR_CD_ID == idAss);
+            query = query.Where(p => p.ASSI_CD_ID == idAss);
             return query.ToList();
         }
 
@@ -42,7 +42,7 @@ namespace DataServices.Repositories
         public List<UNIDADE> GetAllItensAdm(Int32 idAss)
         {
             IQueryable<UNIDADE> query = Db.UNIDADE;
-            query = query.Where(p => p.TORR_CD_ID == idAss);
+            query = query.Where(p => p.ASSI_CD_ID == idAss);
             return query.ToList();
         }
     }

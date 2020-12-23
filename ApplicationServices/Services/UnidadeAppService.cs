@@ -27,6 +27,12 @@ namespace ApplicationServices.Services
             return lista;
         }
 
+        public List<TIPO_UNIDADE> GetAllTipos(Int32? idAss)
+        {
+            List<TIPO_UNIDADE> lista = _baseService.GetAllTipos(idAss);
+            return lista;
+        }
+
         public List<UNIDADE> GetAllItensAdm(Int32? idAss)
         {
             List<UNIDADE> lista = _baseService.GetAllItensAdm(idAss);
@@ -57,6 +63,7 @@ namespace ApplicationServices.Services
 
                 // Completa objeto
                 item.UNID_IN_ATIVO = 1;
+                item.ASSI_CD_ID = usuario.ASSI_CD_ID;
                 item.TORR_CD_ID = torre.Value;
 
                 // Monta Log
@@ -124,6 +131,34 @@ namespace ApplicationServices.Services
             {
                 // Verifica integridade referencial
                 if (item.USUARIO.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.AUTORIZACAO_ACESSO.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.ENCOMENDA.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.ENTRADA_SAIDA.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.CONTROLE_VEICULO.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.OCORRENCIA.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.LISTA_CONVIDADO.Count > 0)
+                {
+                    return 1;
+                }
+                if (item.SOLICITACAO_MUDANCA.Count > 0)
                 {
                     return 1;
                 }

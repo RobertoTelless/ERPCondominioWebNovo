@@ -249,7 +249,7 @@ namespace ERP_Condominio_Presentation.Controllers
                 usuario = (USUARIO)Session["UserCredentials"];
 
                 // Verfifica permissão
-                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM")
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
                 {
                     Session["MensNoticia"] = 2;
                     return RedirectToAction("CarregarBase", "BaseAdmin");
@@ -385,7 +385,7 @@ namespace ERP_Condominio_Presentation.Controllers
                 usuario = (USUARIO)Session["UserCredentials"];
 
                 // Verfifica permissão
-                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM")
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
                 {
                     Session["MensNoticia"] = 2;
                     return RedirectToAction("CarregarBase", "BaseAdmin");
@@ -473,7 +473,7 @@ namespace ERP_Condominio_Presentation.Controllers
                 usuario = (USUARIO)Session["UserCredentials"];
 
                 // Verfifica permissão
-                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM")
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
                 {
                     Session["MensAcesso"] = 2;
                     return RedirectToAction("CarregarBase", "BaseAdmin");
@@ -545,7 +545,7 @@ namespace ERP_Condominio_Presentation.Controllers
                 usuario = (USUARIO)Session["UserCredentials"];
 
                 // Verfifica permissão
-                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM")
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
                 {
                     Session["MensNoticia"] = 2;
                     return RedirectToAction("MontarTelaNoticia", "Noticia");

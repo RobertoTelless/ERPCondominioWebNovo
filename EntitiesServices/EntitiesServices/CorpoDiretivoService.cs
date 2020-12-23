@@ -16,53 +16,49 @@ using System.Data;
 
 namespace ModelServices.EntitiesServices
 {
-    public class UnidadeService : ServiceBase<UNIDADE>, IUnidadeService
+    public class CorpoDiretivoService : ServiceBase<CORPO_DIRETIVO>, ICorpoDiretivoService
     {
-        private readonly IUnidadeRepository _baseRepository;
+        private readonly ICorpoDiretivoRepository _baseRepository;
         private readonly ILogRepository _logRepository;
-        private readonly ITipoUnidadeRepository _tuRepository;
+        private readonly IFuncaoCorpoDiretivoRepository _funRepository;
+        private readonly IUsuarioRepository _usuRepository;
         protected ERP_Condominio_DBEntities Db = new ERP_Condominio_DBEntities();
 
-        public UnidadeService(IUnidadeRepository baseRepository, ILogRepository logRepository, ITipoUnidadeRepository tuRepository) : base(baseRepository)
+        public CorpoDiretivoService(ICorpoDiretivoRepository baseRepository, ILogRepository logRepository, IFuncaoCorpoDiretivoRepository funRepository, IUsuarioRepository usuRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
-            _tuRepository = tuRepository;
+            _funRepository = funRepository;
+            _usuRepository = usuRepository;
         }
 
-        public UNIDADE GetItemById(Int32 id)
+        public CORPO_DIRETIVO GetItemById(Int32 id)
         {
-            UNIDADE item = _baseRepository.GetItemById(id);
+            CORPO_DIRETIVO item = _baseRepository.GetItemById(id);
             return item;
         }
 
-        public UNIDADE CheckExist(UNIDADE item, Int32? idAss)
+        public List<CORPO_DIRETIVO> GetAllItens(Int32 idAss)
         {
-            UNIDADE volta = _baseRepository.CheckExist(item, idAss);
-            return volta;
+            return _baseRepository.GetAllItens(idAss);
         }
 
-        public List<UNIDADE> GetAllItens(Int32? id)
+        public List<CORPO_DIRETIVO> GetAllItensAdm(Int32 idAss)
         {
-            return _baseRepository.GetAllItens(id.Value);
+            return _baseRepository.GetAllItensAdm(idAss);
         }
 
-        public List<TIPO_UNIDADE> GetAllTipos(Int32? id)
+        public List<FUNCAO_CORPO_DIRETIVO> GetAllFuncoes(Int32 idAss)
         {
-            return _tuRepository.GetAllItens(id.Value);
+            return _funRepository.GetAllItens(idAss);
         }
 
-        public List<UNIDADE> GetAllItensAssinante(Int32 id)
+        public List<USUARIO> GetAllUsuarios(Int32 idAss)
         {
-            return _baseRepository.GetAllItensAssinante(id);
+            return _usuRepository.GetAllItens(idAss);
         }
 
-        public List<UNIDADE> GetAllItensAdm(Int32? id)
-        {
-            return _baseRepository.GetAllItensAdm(id.Value);
-        }
-    
-        public Int32 Create(UNIDADE item, LOG log)
+        public Int32 Create(CORPO_DIRETIVO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -81,7 +77,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Create(UNIDADE item)
+        public Int32 Create(CORPO_DIRETIVO item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -100,13 +96,13 @@ namespace ModelServices.EntitiesServices
         }
 
 
-        public Int32 Edit(UNIDADE item, LOG log)
+        public Int32 Edit(CORPO_DIRETIVO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    UNIDADE obj = _baseRepository.GetById(item.UNID_CD_ID);
+                    CORPO_DIRETIVO obj = _baseRepository.GetById(item.CODI_CD_ID);
                     _baseRepository.Detach(obj);
                     _logRepository.Add(log);
                     _baseRepository.Update(item);
@@ -121,13 +117,13 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Edit(UNIDADE item)
+        public Int32 Edit(CORPO_DIRETIVO item)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    UNIDADE obj = _baseRepository.GetById(item.UNID_CD_ID);
+                    CORPO_DIRETIVO obj = _baseRepository.GetById(item.CODI_CD_ID);
                     _baseRepository.Detach(obj);
                     _baseRepository.Update(item);
                     transaction.Commit();
@@ -141,7 +137,7 @@ namespace ModelServices.EntitiesServices
             }
         }
 
-        public Int32 Delete(UNIDADE item, LOG log)
+        public Int32 Delete(CORPO_DIRETIVO item, LOG log)
         {
             using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
             {
@@ -159,6 +155,5 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
-
     }
 }

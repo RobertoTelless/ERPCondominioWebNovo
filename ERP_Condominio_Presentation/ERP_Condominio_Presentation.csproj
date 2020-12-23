@@ -261,6 +261,7 @@
     <Compile Include="Controllers\TelefoneController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\TorreUnidadeVagaController.cs" />
+    <Compile Include="Controllers\UnidadeController.cs" />
     <Compile Include="Extensions\HMTLHelperExtensions.cs" />
     <Compile Include="Extensions\MVCButtonExtensions.cs" />
     <Compile Include="Extensions\WebMvcExtensions.cs" />
@@ -2537,20 +2538,19 @@
     <Content Include="Views\Tarefa\MontarTelaTarefa.cshtml" />
     <Content Include="Views\Tarefa\IncluirTarefa.cshtml" />
     <Content Include="Views\Tarefa\EditarTarefa.cshtml" />
-    <Content Include="Views\Tarefa\EditarTarefaCompartilhada.cshtml" />
     <Content Include="Views\Tarefa\VerAnexoTarefa.cshtml" />
     <Content Include="Views\Tarefa\IncluirAcompanhamento.cshtml" />
     <Content Include="Views\Telefone\MontarTelaTelefone.cshtml" />
     <Content Include="Views\Telefone\MontarTelaTelefoneContato.cshtml" />
     <Content Include="Views\Telefone\IncluirTelefone.cshtml" />
     <Content Include="Views\Telefone\EditarTelefone.cshtml" />
-    <Content Include="Views\Telefone\VerTelefone.cshtml" />
     <Content Include="Views\Template\MontarTelaTemplate.cshtml" />
-    <Content Include="Views\Template\IncluirTemplate.cshtml" />
     <Content Include="Views\Template\EditarTemplate.cshtml" />
-    <Content Include="Views\Template\ExcluirTemplate.cshtml" />
-    <Content Include="Views\Template\ReativarTemplate.cshtml" />
     <Content Include="Views\Administracao\MontarTelaPerfilUsuario.cshtml" />
+    <Content Include="Views\Unidade\MontarTelaUnidade.cshtml" />
+    <Content Include="Views\Unidade\IncluirUnidade.cshtml" />
+    <Content Include="Views\Unidade\EditarUnidade.cshtml" />
+    <Content Include="Views\Unidade\DashboardUnidade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

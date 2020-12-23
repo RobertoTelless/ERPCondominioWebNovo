@@ -5,6 +5,27 @@
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
 }
 <div class="wrapper wrapper-content animated fadeInRight">
+    <div id="containerModalDesc">
+        <div class="modal fade" id="modalDesc" tabindex="-1" role="dialog" aria-labelledby="modalDesc" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDesc">Registro de Log</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modalDescBody" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="page-title"> 
         <h3 class="title">Auditoria - Log</h3> 
         <br />
@@ -183,6 +204,7 @@
                                                 <td>@cond.USUARIO.USUA_NM_NOME</td>
                                                 <td class="td-one-action">
                                                     @Html.TableLinkDetails(cond.LOG_CD_ID, "VerLog","fa-search", "Ver Registro de Log")
+                                                    <span style="color: #337ab7; cursor: pointer;" class="tbl-link fa-lg fa fa-info-circle" onclick="mostrarTeg('@cond.LOG_TX_REGISTRO')"></span>
                                                 </td>
                                             </tr>
                                         }
@@ -212,6 +234,13 @@
     @Scripts.Render("~/bundles/inputmask")
     @Scripts.Render("~/plugins/jasnyBootstrap")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+
+    <script>
+        function mostrarReg(desc) {
+            $('#modalDescBody').html(desc);
+            $('#modalDesc').modal('show');
+        }
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {

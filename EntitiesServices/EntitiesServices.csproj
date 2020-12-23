@@ -140,6 +140,8 @@
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
     <Compile Include="EntitiesServices\AgendaService.cs" />
     <Compile Include="EntitiesServices\AssinanteService.cs" />
+    <Compile Include="EntitiesServices\CorpoDiretivoService.cs" />
+    <Compile Include="EntitiesServices\FornecedorService.cs" />
     <Compile Include="EntitiesServices\VagaService.cs" />
     <Compile Include="EntitiesServices\UnidadeService.cs" />
     <Compile Include="EntitiesServices\TorreService.cs" />
@@ -164,6 +166,8 @@
     <Compile Include="EntitiesServices\UsuarioService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAgendaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAssinanteService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICorpoDiretivoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IFornecedorService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IVagaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IUnidadeService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ITorreService.cs" />
@@ -192,6 +196,10 @@
     <Compile Include="Interfaces\Repositories\IAgendaVinculoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAssinanteRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICategoriaFornecedorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFuncaoCorpoDiretivoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICorpoDiretivoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IVagaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUnidadeRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITorreRepository.cs" />

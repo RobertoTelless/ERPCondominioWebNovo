@@ -121,6 +121,7 @@ namespace ERP_Condominio_Presentation.Controllers
             Session["MensGrupo"] = 0;
             Session["MensSubGrupo"] = 0;
             Session["MensTab"] = 0;
+            Session["MensUnidade"] = 0;
 
             USUARIO usu = (USUARIO)Session["Usuario"];
             UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(usu);
@@ -218,6 +219,10 @@ namespace ERP_Condominio_Presentation.Controllers
                 ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }
             if ((Int32)Session["MensTab"] == 2)
+            {
+                ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
+            }
+            if ((Int32)Session["MensUnidade"] == 2)
             {
                 ModelState.AddModelError("", ERP_Condominio_Resources.ResourceManager.GetString("M0011", CultureInfo.CurrentCulture));
             }

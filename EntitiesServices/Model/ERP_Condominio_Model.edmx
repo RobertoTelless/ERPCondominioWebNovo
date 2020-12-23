@@ -370,7 +370,7 @@
           <Property Name="FUCO_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FUCO_NM_NOME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ASSI_CD_ID" Type="int" />
-          <Property Name="FUCO_IN_ORDEM" Type="int" />
+          <Property Name="FUCO_IN_ATIVO" Type="int" />
         </EntityType>
         <EntityType Name="GRAU_PARENTESCO">
           <Key>
@@ -4771,6 +4771,7 @@
           <Property Name="FUCO_IN_ORDEM" Type="Int32" />
           <NavigationProperty Name="ASSINANTE" Relationship="ERP_Condominio_DBModel.FK_FUNCAO_CORPO_DIRETIVO_ASSINANTE" FromRole="FUNCAO_CORPO_DIRETIVO" ToRole="ASSINANTE" />
           <NavigationProperty Name="CORPO_DIRETIVO" Relationship="ERP_Condominio_DBModel.FK_CORPO_DIRETIVO_FUNCAO_CORPO_DIRETIVO" FromRole="FUNCAO_CORPO_DIRETIVO" ToRole="CORPO_DIRETIVO" />
+          <Property Name="FUCO_IN_ATIVO" Type="Int32" />
         </EntityType>
         <EntityType Name="GRAU_PARENTESCO">
           <Key>
@@ -6487,7 +6488,7 @@
           <EntitySetMapping Name="FUNCAO_CORPO_DIRETIVO">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.FUNCAO_CORPO_DIRETIVO">
               <MappingFragment StoreEntitySet="FUNCAO_CORPO_DIRETIVO">
-                <ScalarProperty Name="FUCO_IN_ORDEM" ColumnName="FUCO_IN_ORDEM" />
+                <ScalarProperty Name="FUCO_IN_ATIVO" ColumnName="FUCO_IN_ATIVO" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="FUCO_NM_NOME" ColumnName="FUCO_NM_NOME" />
                 <ScalarProperty Name="FUCO_CD_ID" ColumnName="FUCO_CD_ID" />
