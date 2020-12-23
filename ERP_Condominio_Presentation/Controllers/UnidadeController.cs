@@ -98,7 +98,8 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "TIUN_CD_ID", "TIUN_NM_NOME");
 
             // Indicadores
-            ViewBag.Inids = ((List<UNIDADE>)Session["ListaUnidade"]).Count;
+            ViewBag.Ativos = listaMaster.Where(p => p.USUARIO.Count > 0).ToList().Count;
+            ViewBag.Unids = ((List<UNIDADE>)Session["ListaUnidade"]).Count;
             ViewBag.Perfil = usuario.PERFIL.PERF_SG_SIGLA;
 
             // Mensagem
@@ -295,7 +296,7 @@ namespace ERP_Condominio_Presentation.Controllers
         }
 
         [HttpGet]
-        public ActionResult DesativarTelefone(Int32 id)
+        public ActionResult DesativarUnidade(Int32 id)
         {
             // Verifica se tem usuario logado
             if ((String)Session["Ativa"] == null)
