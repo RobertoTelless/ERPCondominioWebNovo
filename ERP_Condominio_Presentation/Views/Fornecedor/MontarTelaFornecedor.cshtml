@@ -25,6 +25,26 @@
             </div>
         </div>
     </div>
+    <div id="containerModalDesc">
+        <div class="modal fade" id="modalDesc" tabindex="-1" role="dialog" aria-labelledby="modalDesc" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDesc">Descrição do Fornecedor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="modalDescBody" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="page-title"> 
         <h3 class="title">Fornecedores</h3> 
         <br />
@@ -238,6 +258,7 @@
                                                     <td><img src="~/Images/a8.jpg" style = "width: auto; height: auto; max-height: 55px; max-width: 45px;"></td>
                                                 }
                                                 <td class="td-one-action">
+                                                    <span style="color: #337ab7; cursor: pointer;" class="tbl-link fa-lg fa fa-info-circle" onclick="mostrarDesc('@cond.FORN_DS_DESCRICAO')"></span>
                                                     @if (ViewBag.Perfil == "ADM" || ViewBag.Perfil == "SIN" || ViewBag.Perfil == "CON")
                                                     {
                                                         @Html.TableLinkDetails(cond.FORN_CD_ID, "EditarFornecedor","fa-edit", "Editar/Consultar Fornecedor")
@@ -284,6 +305,13 @@
     @Scripts.Render("~/bundles/inputmask")
     @Scripts.Render("~/plugins/jasnyBootstrap")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+
+    <script>
+        function mostrarDesc(desc) {
+            $('#modalDescBody').html(desc);
+            $('#modalDesc').modal('show');
+        }
+    </script>
     
     <script>
         $(function () {
