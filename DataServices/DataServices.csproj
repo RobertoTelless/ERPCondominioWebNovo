@@ -137,6 +137,9 @@
     <Compile Include="Repositories\AgendaVinculoRepository.cs" />
     <Compile Include="Repositories\AssinanteRepository.cs" />
     <Compile Include="Repositories\CategoriaFornecedorRepository.cs" />
+    <Compile Include="Repositories\FornecedorContatoRepository.cs" />
+    <Compile Include="Repositories\FornecedorCnpjRepository.cs" />
+    <Compile Include="Repositories\FornecedorAnexoRepository.cs" />
     <Compile Include="Repositories\FuncaoCorpoDiretivoRepository.cs" />
     <Compile Include="Repositories\CorpoDiretivoRepository.cs" />
     <Compile Include="Repositories\FornecedorRepository.cs" />

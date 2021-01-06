@@ -17,8 +17,6 @@ namespace EntitiesServices.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UNIDADE()
         {
-            this.USUARIO = new HashSet<USUARIO>();
-            this.VAGA = new HashSet<VAGA>();
             this.AUTORIZACAO_ACESSO = new HashSet<AUTORIZACAO_ACESSO>();
             this.CONTROLE_VEICULO = new HashSet<CONTROLE_VEICULO>();
             this.ENCOMENDA = new HashSet<ENCOMENDA>();
@@ -27,25 +25,22 @@ namespace EntitiesServices.Model
             this.OCORRENCIA = new HashSet<OCORRENCIA>();
             this.RESERVA = new HashSet<RESERVA>();
             this.SOLICITACAO_MUDANCA = new HashSet<SOLICITACAO_MUDANCA>();
+            this.USUARIO = new HashSet<USUARIO>();
+            this.VAGA = new HashSet<VAGA>();
             this.VEICULO = new HashSet<VEICULO>();
         }
     
         public int UNID_CD_ID { get; set; }
         public int TORR_CD_ID { get; set; }
         public int TIUN_CD_ID { get; set; }
+        public Nullable<int> ASSI_CD_ID { get; set; }
         public string UNID_NR_NUMERO { get; set; }
         public Nullable<int> UNID_IN_ATIVO { get; set; }
         public Nullable<int> UNID_IN_ALUGADA { get; set; }
-        public Nullable<int> ASSI_CD_ID { get; set; }
         public string UNID_NM_NOME_TORRE { get; set; }
         public string UNID_NM_EXIBE { get; set; }
     
-        public virtual TIPO_UNIDADE TIPO_UNIDADE { get; set; }
-        public virtual TORRE TORRE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VAGA> VAGA { get; set; }
+        public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AUTORIZACAO_ACESSO> AUTORIZACAO_ACESSO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,8 +57,13 @@ namespace EntitiesServices.Model
         public virtual ICollection<RESERVA> RESERVA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SOLICITACAO_MUDANCA> SOLICITACAO_MUDANCA { get; set; }
+        public virtual TIPO_UNIDADE TIPO_UNIDADE { get; set; }
+        public virtual TORRE TORRE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VAGA> VAGA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VEICULO> VEICULO { get; set; }
-        public virtual ASSINANTE ASSINANTE { get; set; }
     }
 }

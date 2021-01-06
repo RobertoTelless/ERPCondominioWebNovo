@@ -251,6 +251,7 @@
     <Compile Include="Controllers\BaseAdminController.cs" />
     <Compile Include="Controllers\ConfiguracaoController.cs" />
     <Compile Include="Controllers\ControleAcessoController.cs" />
+    <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
@@ -272,6 +273,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Viewmodels\AgendaViewModel.cs" />
     <Compile Include="Viewmodels\AssinanteViewModel.cs" />
+    <Compile Include="Viewmodels\FornecedorContatoViewModel.cs" />
+    <Compile Include="Viewmodels\FornecedorViewModel.cs" />
     <Compile Include="Viewmodels\VagaViewModel.cs" />
     <Compile Include="Viewmodels\UnidadeViewModel.cs" />
     <Compile Include="Viewmodels\TorreViewModel.cs" />
@@ -2551,12 +2554,22 @@
     <Content Include="Views\Unidade\IncluirUnidade.cshtml" />
     <Content Include="Views\Unidade\EditarUnidade.cshtml" />
     <Content Include="Views\Unidade\DashboardUnidade.cshtml" />
+    <Content Include="Views\Fornecedor\MontarTelaFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\IncluirFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\EditarFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\VerCardsFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\VerAnexoFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\EditarContatoFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\IncluirContatoFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\VerFornecedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagens\1\Agenda\1\Anexos\" />
     <Folder Include="Imagens\1\Agenda\2\Anexos\" />
     <Folder Include="Imagens\1\Agenda\3\Anexos\" />
+    <Folder Include="Imagens\1\Fornecedores\Anexos\" />
+    <Folder Include="Imagens\1\Fornecedores\Fotos\" />
     <Folder Include="Imagens\1\Notificacao\1\Anexos\" />
     <Folder Include="Imagens\1\Notificacao\4\Anexos\" />
     <Folder Include="Imagens\1\Notificacao\5\Anexos\" />

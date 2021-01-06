@@ -87,6 +87,9 @@ namespace Presentation.Start
             kernel.Bind<ITorreAppService>().To<TorreAppService>();
             kernel.Bind<IUnidadeAppService>().To<UnidadeAppService>();
             kernel.Bind<IVagaAppService>().To<VagaAppService>();
+            kernel.Bind<ICategoriaFornecedorAppService>().To<CategoriaFornecedorAppService>();
+            kernel.Bind<IFornecedorAppService>().To<FornecedorAppService>();
+            kernel.Bind<IFornecedorCnpjAppService>().To<FornecedorCnpjAppService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<IUsuarioService>().To<UsuarioService>();
@@ -107,6 +110,9 @@ namespace Presentation.Start
             kernel.Bind<ITorreService>().To<TorreService>();
             kernel.Bind<IUnidadeService>().To<UnidadeService>();
             kernel.Bind<IVagaService>().To<VagaService>();
+            kernel.Bind<ICategoriaFornecedorService>().To<CategoriaFornecedorService>();
+            kernel.Bind<IFornecedorService>().To<FornecedorService>();
+            kernel.Bind<IFornecedorCnpjService>().To<FornecedorCnpjService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<IConfiguracaoRepository>().To<ConfiguracaoRepository>();
@@ -139,6 +145,11 @@ namespace Presentation.Start
             kernel.Bind<ITorreRepository>().To<TorreRepository>();
             kernel.Bind<IUnidadeRepository>().To<UnidadeRepository>();
             kernel.Bind<IVagaRepository>().To<VagaRepository>();
+            kernel.Bind<ICategoriaFornecedorRepository>().To<CategoriaFornecedorRepository>();
+            kernel.Bind<IFornecedorRepository>().To<FornecedorRepository>();
+            kernel.Bind<IFornecedorAnexoRepository>().To<FornecedorAnexoRepository>();
+            kernel.Bind<IFornecedorContatoRepository>().To<FornecedorContatoRepository>();
+            kernel.Bind<IFornecedorCnpjRepository>().To<FornecedorCnpjRepository>();
 
         }
     }

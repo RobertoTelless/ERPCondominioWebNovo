@@ -38,6 +38,8 @@ namespace MvcMapping.Mappers
             CreateMap<TORRE, TorreViewModel>();
             CreateMap<UNIDADE, UnidadeViewModel>();
             CreateMap<VAGA, VagaViewModel>();
+            CreateMap<FORNECEDOR, FornecedorViewModel>();
+            CreateMap<FORNECEDOR_CONTATO, FornecedorContatoViewModel>();
 
 
         }

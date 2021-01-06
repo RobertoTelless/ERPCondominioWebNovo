@@ -20,24 +20,24 @@ namespace EntitiesServices.Model
             this.AGENDA = new HashSet<AGENDA>();
             this.AGENDA1 = new HashSet<AGENDA>();
             this.AGENDA_VINCULO = new HashSet<AGENDA_VINCULO>();
-            this.LOG = new HashSet<LOG>();
-            this.NOTICIA_COMENTARIO = new HashSet<NOTICIA_COMENTARIO>();
-            this.NOTIFICACAO = new HashSet<NOTIFICACAO>();
-            this.TAREFA = new HashSet<TAREFA>();
-            this.TAREFA_ACOMPANHAMENTO = new HashSet<TAREFA_ACOMPANHAMENTO>();
-            this.TAREFA_NOTIFICACAO = new HashSet<TAREFA_NOTIFICACAO>();
-            this.TAREFA_VINCULO = new HashSet<TAREFA_VINCULO>();
-            this.USUARIO_ANEXO = new HashSet<USUARIO_ANEXO>();
             this.AUTORIZACAO_ACESSO = new HashSet<AUTORIZACAO_ACESSO>();
             this.CORPO_DIRETIVO = new HashSet<CORPO_DIRETIVO>();
             this.ENCOMENDA = new HashSet<ENCOMENDA>();
             this.LISTA_CONVIDADO = new HashSet<LISTA_CONVIDADO>();
+            this.LOG = new HashSet<LOG>();
+            this.NOTICIA_COMENTARIO = new HashSet<NOTICIA_COMENTARIO>();
+            this.NOTIFICACAO = new HashSet<NOTIFICACAO>();
             this.OCORRENCIA = new HashSet<OCORRENCIA>();
             this.OCORRENCIA_COMENTARIO = new HashSet<OCORRENCIA_COMENTARIO>();
             this.RESERVA = new HashSet<RESERVA>();
             this.SOLICITACAO_MUDANCA = new HashSet<SOLICITACAO_MUDANCA>();
             this.SOLICITACAO_MUDANCA_COMENTARIO = new HashSet<SOLICITACAO_MUDANCA_COMENTARIO>();
             this.SOLICITACAO_MUDANCA_MOVIMENTO = new HashSet<SOLICITACAO_MUDANCA_MOVIMENTO>();
+            this.TAREFA = new HashSet<TAREFA>();
+            this.TAREFA_ACOMPANHAMENTO = new HashSet<TAREFA_ACOMPANHAMENTO>();
+            this.TAREFA_NOTIFICACAO = new HashSet<TAREFA_NOTIFICACAO>();
+            this.TAREFA_VINCULO = new HashSet<TAREFA_VINCULO>();
+            this.USUARIO_ANEXO = new HashSet<USUARIO_ANEXO>();
             this.USUARIO_CONTROLE_ENTRADA = new HashSet<USUARIO_CONTROLE_ENTRADA>();
         }
     
@@ -79,6 +79,7 @@ namespace EntitiesServices.Model
         public Nullable<System.DateTime> USUA_DT_ENTRADA { get; set; }
         public Nullable<System.DateTime> USUA_DT_SAIDA { get; set; }
         public string USUA_DS_MOTIVO_SAIDA { get; set; }
+        public Nullable<int> USUA_IN_PROPRIETARIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AGENDA> AGENDA { get; set; }
@@ -87,15 +88,35 @@ namespace EntitiesServices.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AGENDA_VINCULO> AGENDA_VINCULO { get; set; }
         public virtual ASSINANTE ASSINANTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AUTORIZACAO_ACESSO> AUTORIZACAO_ACESSO { get; set; }
         public virtual CARGO CARGO { get; set; }
         public virtual CATEGORIA_USUARIO CATEGORIA_USUARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CORPO_DIRETIVO> CORPO_DIRETIVO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ENCOMENDA> ENCOMENDA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LISTA_CONVIDADO> LISTA_CONVIDADO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LOG> LOG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTICIA_COMENTARIO> NOTICIA_COMENTARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NOTIFICACAO> NOTIFICACAO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OCORRENCIA> OCORRENCIA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OCORRENCIA_COMENTARIO> OCORRENCIA_COMENTARIO { get; set; }
         public virtual PERFIL PERFIL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RESERVA> RESERVA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SOLICITACAO_MUDANCA> SOLICITACAO_MUDANCA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SOLICITACAO_MUDANCA_COMENTARIO> SOLICITACAO_MUDANCA_COMENTARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SOLICITACAO_MUDANCA_MOVIMENTO> SOLICITACAO_MUDANCA_MOVIMENTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TAREFA> TAREFA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -107,26 +128,6 @@ namespace EntitiesServices.Model
         public virtual UNIDADE UNIDADE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_ANEXO> USUARIO_ANEXO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AUTORIZACAO_ACESSO> AUTORIZACAO_ACESSO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CORPO_DIRETIVO> CORPO_DIRETIVO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ENCOMENDA> ENCOMENDA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LISTA_CONVIDADO> LISTA_CONVIDADO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OCORRENCIA> OCORRENCIA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OCORRENCIA_COMENTARIO> OCORRENCIA_COMENTARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RESERVA> RESERVA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SOLICITACAO_MUDANCA> SOLICITACAO_MUDANCA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SOLICITACAO_MUDANCA_COMENTARIO> SOLICITACAO_MUDANCA_COMENTARIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SOLICITACAO_MUDANCA_MOVIMENTO> SOLICITACAO_MUDANCA_MOVIMENTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO_CONTROLE_ENTRADA> USUARIO_CONTROLE_ENTRADA { get; set; }
     }

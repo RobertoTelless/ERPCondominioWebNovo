@@ -134,6 +134,9 @@
     <Compile Include="Interfaces\IAgendaAppService.cs" />
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IAssinanteAppService.cs" />
+    <Compile Include="Interfaces\ICategoriaFornecedorAppService.cs" />
+    <Compile Include="Interfaces\IFornecedorCnpjAppService.cs" />
+    <Compile Include="Interfaces\IFornecedorAppService.cs" />
     <Compile Include="Interfaces\IVagaAppService.cs" />
     <Compile Include="Interfaces\IUnidadeAppService.cs" />
     <Compile Include="Interfaces\ITorreAppService.cs" />
@@ -159,6 +162,9 @@
     <Compile Include="Services\AgendaAppService.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\AssinanteAppService.cs" />
+    <Compile Include="Services\CategoriaFornecedorAppService.cs" />
+    <Compile Include="Services\FornecedorCnpjAppService.cs" />
+    <Compile Include="Services\FornecedorAppService.cs" />
     <Compile Include="Services\VagaAppService.cs" />
     <Compile Include="Services\UnidadeAppService.cs" />
     <Compile Include="Services\TorreAppService.cs" />

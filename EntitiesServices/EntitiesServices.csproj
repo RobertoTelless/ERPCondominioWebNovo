@@ -140,7 +140,9 @@
     <Compile Include="Attributes\DataAnteriorAttribute.cs" />
     <Compile Include="EntitiesServices\AgendaService.cs" />
     <Compile Include="EntitiesServices\AssinanteService.cs" />
+    <Compile Include="EntitiesServices\CategoriaFornecedorService.cs" />
     <Compile Include="EntitiesServices\CorpoDiretivoService.cs" />
+    <Compile Include="EntitiesServices\FornecedorCnpjService.cs" />
     <Compile Include="EntitiesServices\FornecedorService.cs" />
     <Compile Include="EntitiesServices\VagaService.cs" />
     <Compile Include="EntitiesServices\UnidadeService.cs" />
@@ -166,7 +168,9 @@
     <Compile Include="EntitiesServices\UsuarioService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAgendaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IAssinanteService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\ICategoriaFornecedorService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ICorpoDiretivoService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IFornecedorCnpjService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IFornecedorService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IVagaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IUnidadeService.cs" />
@@ -197,6 +201,9 @@
     <Compile Include="Interfaces\Repositories\IAssinanteRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriaFornecedorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFornecedorContatoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFornecedorCnpjRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFornecedorAnexoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFuncaoCorpoDiretivoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICorpoDiretivoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorRepository.cs" />
@@ -325,6 +332,15 @@
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FORNECEDOR.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FORNECEDOR_ANEXO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FORNECEDOR_CONTATO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FORNECEDOR_QUADRO_SOCIETARIO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\FUNCAO_CORPO_DIRETIVO.cs">

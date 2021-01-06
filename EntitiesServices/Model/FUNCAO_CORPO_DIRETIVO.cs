@@ -23,7 +23,6 @@ namespace EntitiesServices.Model
         public int FUCO_CD_ID { get; set; }
         public string FUCO_NM_NOME { get; set; }
         public Nullable<int> ASSI_CD_ID { get; set; }
-        public Nullable<int> FUCO_IN_ORDEM { get; set; }
         public Nullable<int> FUCO_IN_ATIVO { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
