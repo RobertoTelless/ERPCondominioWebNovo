@@ -190,6 +190,9 @@
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_USUARIO_CONTROLE_ENTRADA_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_VEICULO_VAGA" ManuallyRouted="false" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_VEICULO_ANEXO_VEICULO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO" Width="1.5" PointX="19.5" PointY="76.5" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_FORNECEDOR" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_USUARIO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

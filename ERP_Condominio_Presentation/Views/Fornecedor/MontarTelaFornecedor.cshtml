@@ -98,7 +98,7 @@
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
-                </div>           
+                </div>  
             
                 @using (Html.BeginForm("FiltrarFornecedor", "Fornecedor", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
                 {
@@ -268,7 +268,7 @@
                                                         }
                                                         else
                                                         {   
-                                                            <span style="color: #337ab7; cursor:pointer;" alt="Desativar" class="tbl-link fa-lg fa fa-trash-o" onclick="ShowModalReativar('/Fornecedor/ReativarFornecedor/@cond.FORN_CD_ID)" title="Reativar"></span>
+                                                            <span style="color: #337ab7; cursor:pointer;" alt="Desativar" class="tbl-link fa-lg fa fa-refresh" onclick="ShowModalReativar('/Fornecedor/ReativarFornecedor/@cond.FORN_CD_ID)" title="Reativar"></span>
                                                         }
                                                     }
                                                     else

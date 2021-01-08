@@ -385,6 +385,17 @@
           <Property Name="FOAN_AQ_ARQUIVO" Type="varchar" MaxLength="250" />
           <Property Name="FOAN_IN_ATIVO" Type="int" />
         </EntityType>
+        <EntityType Name="FORNECEDOR_COMENTARIO">
+          <Key>
+            <PropertyRef Name="FOCM_CD_ID" />
+          </Key>
+          <Property Name="FOCM_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FORN_CD_ID" Type="int" Nullable="false" />
+          <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
+          <Property Name="FOCM_DT_COMENTARIO" Type="datetime" />
+          <Property Name="FOCM_DS_COMENTARIO" Type="varchar" MaxLength="5000" />
+          <Property Name="FOCM_IN_ATIVO" Type="int" />
+        </EntityType>
         <EntityType Name="FORNECEDOR_CONTATO">
           <Key>
             <PropertyRef Name="FOCO_CD_ID" />
@@ -1470,6 +1481,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FORNECEDOR_COMENTARIO_FORNECEDOR">
+          <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="1" />
+          <End Role="FORNECEDOR_COMENTARIO" Type="Self.FORNECEDOR_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORNECEDOR">
+              <PropertyRef Name="FORN_CD_ID" />
+            </Principal>
+            <Dependent Role="FORNECEDOR_COMENTARIO">
+              <PropertyRef Name="FORN_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORNECEDOR_COMENTARIO_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="FORNECEDOR_COMENTARIO" Type="Self.FORNECEDOR_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USUA_CD_ID" />
+            </Principal>
+            <Dependent Role="FORNECEDOR_COMENTARIO">
+              <PropertyRef Name="USUA_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FORNECEDOR_CONTATO_FORNECEDOR">
           <End Role="FORNECEDOR" Type="Self.FORNECEDOR" Multiplicity="1" />
           <End Role="FORNECEDOR_CONTATO" Type="Self.FORNECEDOR_CONTATO" Multiplicity="*" />
@@ -2363,6 +2398,7 @@
           <EntitySet Name="FORMA_ENTREGA" EntityType="Self.FORMA_ENTREGA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORNECEDOR" EntityType="Self.FORNECEDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORNECEDOR_ANEXO" EntityType="Self.FORNECEDOR_ANEXO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FORNECEDOR_COMENTARIO" EntityType="Self.FORNECEDOR_COMENTARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORNECEDOR_CONTATO" EntityType="Self.FORNECEDOR_CONTATO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FORNECEDOR_QUADRO_SOCIETARIO" EntityType="Self.FORNECEDOR_QUADRO_SOCIETARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FUNCAO_CORPO_DIRETIVO" EntityType="Self.FUNCAO_CORPO_DIRETIVO" Schema="dbo" store:Type="Tables" />
@@ -2573,6 +2609,14 @@
           <AssociationSet Name="FK_FORNECEDOR_CATEGORIA_FORNECEDOR" Association="Self.FK_FORNECEDOR_CATEGORIA_FORNECEDOR">
             <End Role="CATEGORIA_FORNECEDOR" EntitySet="CATEGORIA_FORNECEDOR" />
             <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORNECEDOR_COMENTARIO_FORNECEDOR" Association="Self.FK_FORNECEDOR_COMENTARIO_FORNECEDOR">
+            <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+            <End Role="FORNECEDOR_COMENTARIO" EntitySet="FORNECEDOR_COMENTARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORNECEDOR_COMENTARIO_USUARIO" Association="Self.FK_FORNECEDOR_COMENTARIO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FORNECEDOR_COMENTARIO" EntitySet="FORNECEDOR_COMENTARIO" />
           </AssociationSet>
           <AssociationSet Name="FK_FORNECEDOR_CONTATO_FORNECEDOR" Association="Self.FK_FORNECEDOR_CONTATO_FORNECEDOR">
             <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
@@ -3328,6 +3372,7 @@
           <Property Name="FORN_NR_CNPJ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FORN_AQ_FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="FORN_TX_OBSERVACOES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FORNECEDOR_COMENTARIO" Relationship="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_FORNECEDOR" FromRole="FORNECEDOR" ToRole="FORNECEDOR_COMENTARIO" />
         </EntityType>
         <EntityType Name="FORNECEDOR_ANEXO">
           <Key>
@@ -3980,6 +4025,7 @@
           <NavigationProperty Name="UNIDADE" Relationship="Self.FK_USUARIO_UNIDADE" FromRole="USUARIO" ToRole="UNIDADE" />
           <NavigationProperty Name="USUARIO_ANEXO" Relationship="Self.FK_USUARIO_ANEXO_USUARIO" FromRole="USUARIO" ToRole="USUARIO_ANEXO" />
           <NavigationProperty Name="USUARIO_CONTROLE_ENTRADA" Relationship="Self.FK_USUARIO_CONTROLE_ENTRADA_USUARIO" FromRole="USUARIO" ToRole="USUARIO_CONTROLE_ENTRADA" />
+          <NavigationProperty Name="FORNECEDOR_COMENTARIO" Relationship="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_USUARIO" FromRole="USUARIO" ToRole="FORNECEDOR_COMENTARIO" />
         </EntityType>
         <EntityType Name="USUARIO_ANEXO">
           <Key>
@@ -5952,7 +5998,53 @@
             <End Role="VEICULO" EntitySet="VEICULO" />
             <End Role="VEICULO_ANEXO" EntitySet="VEICULO_ANEXO" />
           </AssociationSet>
+          <EntitySet Name="FORNECEDOR_COMENTARIO" EntityType="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO" />
+          <AssociationSet Name="FK_FORNECEDOR_COMENTARIO_FORNECEDOR" Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_FORNECEDOR">
+            <End Role="FORNECEDOR" EntitySet="FORNECEDOR" />
+            <End Role="FORNECEDOR_COMENTARIO" EntitySet="FORNECEDOR_COMENTARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FORNECEDOR_COMENTARIO_USUARIO" Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="FORNECEDOR_COMENTARIO" EntitySet="FORNECEDOR_COMENTARIO" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FORNECEDOR_COMENTARIO">
+          <Key>
+            <PropertyRef Name="FOCM_CD_ID" />
+          </Key>
+          <Property Name="FOCM_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FORN_CD_ID" Type="Int32" Nullable="false" />
+          <Property Name="USUA_CD_ID" Type="Int32" Nullable="false" />
+          <Property Name="FOCM_DT_COMENTARIO" Type="DateTime" Precision="3" />
+          <Property Name="FOCM_DS_COMENTARIO" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="FOCM_IN_ATIVO" Type="Int32" />
+          <NavigationProperty Name="FORNECEDOR" Relationship="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_FORNECEDOR" FromRole="FORNECEDOR_COMENTARIO" ToRole="FORNECEDOR" />
+          <NavigationProperty Name="USUARIO" Relationship="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_USUARIO" FromRole="FORNECEDOR_COMENTARIO" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_FORNECEDOR_COMENTARIO_FORNECEDOR">
+          <End Type="ERP_Condominio_DBModel.FORNECEDOR" Role="FORNECEDOR" Multiplicity="1" />
+          <End Type="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO" Role="FORNECEDOR_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORNECEDOR">
+              <PropertyRef Name="FORN_CD_ID" />
+            </Principal>
+            <Dependent Role="FORNECEDOR_COMENTARIO">
+              <PropertyRef Name="FORN_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FORNECEDOR_COMENTARIO_USUARIO">
+          <End Type="ERP_Condominio_DBModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO" Role="FORNECEDOR_COMENTARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USUA_CD_ID" />
+            </Principal>
+            <Dependent Role="FORNECEDOR_COMENTARIO">
+              <PropertyRef Name="USUA_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6988,6 +7080,18 @@
                 <ScalarProperty Name="VEAN_DT_ANEXO" ColumnName="VEAN_DT_ANEXO" />
                 <ScalarProperty Name="VEAN_AQ_ARQUIVO" ColumnName="VEAN_AQ_ARQUIVO" />
                 <ScalarProperty Name="VEAN_IN_ATIVO" ColumnName="VEAN_IN_ATIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORNECEDOR_COMENTARIO">
+            <EntityTypeMapping TypeName="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO">
+              <MappingFragment StoreEntitySet="FORNECEDOR_COMENTARIO">
+                <ScalarProperty Name="FOCM_IN_ATIVO" ColumnName="FOCM_IN_ATIVO" />
+                <ScalarProperty Name="FOCM_DS_COMENTARIO" ColumnName="FOCM_DS_COMENTARIO" />
+                <ScalarProperty Name="FOCM_DT_COMENTARIO" ColumnName="FOCM_DT_COMENTARIO" />
+                <ScalarProperty Name="USUA_CD_ID" ColumnName="USUA_CD_ID" />
+                <ScalarProperty Name="FORN_CD_ID" ColumnName="FORN_CD_ID" />
+                <ScalarProperty Name="FOCM_CD_ID" ColumnName="FOCM_CD_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -337,6 +337,9 @@
     <Compile Include="Model\FORNECEDOR_ANEXO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FORNECEDOR_COMENTARIO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\FORNECEDOR_CONTATO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
