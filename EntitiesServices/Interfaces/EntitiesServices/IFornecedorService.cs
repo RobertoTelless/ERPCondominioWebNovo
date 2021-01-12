@@ -27,11 +27,18 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<TIPO_PESSOA> GetAllTiposPessoa();
         List<UF> GetAllUF();
         UF GetUFbySigla(String sigla);
+        List<TIPO_MENSAGEM> GetAllTiposMensagem();
+        TEMPLATE GetTemplate(String code);
+        CONFIGURACAO CarregaConfiguracao(Int32 id);
 
         FORNECEDOR_ANEXO GetAnexoById(Int32 id);
 
         FORNECEDOR_CONTATO GetContatoById(Int32 id);
         Int32 EditContato(FORNECEDOR_CONTATO item);
         Int32 CreateContato(FORNECEDOR_CONTATO item);
+
+        FORNECEDOR_MENSAGEM GetMensagemById(Int32 id);
+        Int32 EditMensagem(FORNECEDOR_MENSAGEM item);
+        Int32 CreateMensagem(FORNECEDOR_MENSAGEM item);
     }
 }

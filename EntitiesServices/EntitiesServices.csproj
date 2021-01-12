@@ -201,12 +201,14 @@
     <Compile Include="Interfaces\Repositories\IAssinanteRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriaFornecedorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IFornecedoMensagemRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorContatoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorCnpjRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorAnexoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFuncaoCorpoDiretivoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICorpoDiretivoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoMensagemRepository.cs" />
     <Compile Include="Interfaces\Repositories\IVagaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUnidadeRepository.cs" />
     <Compile Include="Interfaces\Repositories\ITorreRepository.cs" />
@@ -343,6 +345,9 @@
     <Compile Include="Model\FORNECEDOR_CONTATO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FORNECEDOR_MENSAGEM.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\FORNECEDOR_QUADRO_SOCIETARIO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
@@ -428,6 +433,9 @@
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TIPO_ENCOMENDA.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_MENSAGEM.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TIPO_PESSOA.cs">

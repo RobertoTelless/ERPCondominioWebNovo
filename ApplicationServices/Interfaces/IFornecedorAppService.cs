@@ -26,10 +26,17 @@ namespace ApplicationServices.Interfaces
         List<TIPO_PESSOA> GetAllTiposPessoa();
         List<UF> GetAllUF();
         UF GetUFbySigla(String sigla);
+        List<TIPO_MENSAGEM> GetAllTiposMensagem();
+        TEMPLATE GetTemplate(String code);
 
         FORNECEDOR_ANEXO GetAnexoById(Int32 id);
+  
         FORNECEDOR_CONTATO GetContatoById(Int32 id);
         Int32 ValidateEditContato(FORNECEDOR_CONTATO item);
         Int32 ValidateCreateContato(FORNECEDOR_CONTATO item);
+
+        FORNECEDOR_MENSAGEM GetMensagemById(Int32 id);
+        Int32 ValidateEditMensagem(FORNECEDOR_MENSAGEM item);
+        Int32 ValidateCreateMensagem(FORNECEDOR_MENSAGEM item, USUARIO usuario);
     }
 }

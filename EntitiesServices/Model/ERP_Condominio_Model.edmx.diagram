@@ -193,6 +193,11 @@
         <EntityTypeShape EntityType="ERP_Condominio_DBModel.FORNECEDOR_COMENTARIO" Width="1.5" PointX="19.5" PointY="76.5" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_FORNECEDOR" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_COMENTARIO_USUARIO" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.FORNECEDOR_MENSAGEM" Width="1.5" PointX="22.5" PointY="76.375" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_MENSAGEM" Width="1.5" PointX="20.25" PointY="73" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_FORNECEDOR" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_TIPO_MENSAGEM" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_USUARIO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

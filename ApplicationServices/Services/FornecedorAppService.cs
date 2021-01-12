@@ -27,6 +27,11 @@ namespace ApplicationServices.Services
             return lista;
         }
 
+        public TEMPLATE GetTemplate(String code)
+        {
+            return _baseService.GetTemplate(code);
+        }
+
         public List<UF> GetAllUF()
         {
             List<UF> lista = _baseService.GetAllUF();
@@ -333,5 +338,91 @@ namespace ApplicationServices.Services
                 throw;
             }
         }
+
+        public List<TIPO_MENSAGEM> GetAllTiposMensagem()
+        {
+            List<TIPO_MENSAGEM> lista = _baseService.GetAllTiposMensagem();
+            return lista;
+        }
+
+        public FORNECEDOR_MENSAGEM GetMensagemById(Int32 id)
+        {
+            FORNECEDOR_MENSAGEM lista = _baseService.GetMensagemById(id);
+            return lista;
+        }
+
+        public Int32 ValidateEditMensagem(FORNECEDOR_MENSAGEM item)
+        {
+            try
+            {
+                // Persiste
+                return _baseService.EditMensagem(item);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public Int32 ValidateCreateMensagem(FORNECEDOR_MENSAGEM item, USUARIO usuario)
+        {
+            try
+            {
+                // Completa registro
+                item.FOME_IN_ATIVO = 1;
+
+                // Monta log
+                String registro = item.FORNECEDOR.FORN_NM_NOME + " - " + item.TIPO_MENSAGEM.TIME_NM_NOME + " - " + item.FOME_DT_ENVIO.ToShortDateString() + " - " + item.FOME_DS_TEXTO;
+                LOG log = new LOG();
+                log.LOG_DT_DATA = DateTime.Now;
+                log.LOG_NM_OPERACAO = "FornMSG";
+                log.ASSI_CD_ID = usuario.ASSI_CD_ID;
+                log.LOG_TX_REGISTRO = registro;
+                log.LOG_IN_ATIVO = 1;
+
+                if (item.TIME_CD_ID == 1)
+                {
+                    // Recupera template e-mail
+                    String header = _baseService.GetTemplate("MSGFOR").TEMP_TX_CABECALHO;
+                    String body = _baseService.GetTemplate("MSGFOR").TEMP_TX_CORPO;
+                    String data = _baseService.GetTemplate("MSGFOR").TEMP_TX_DADOS;
+
+                    // Prepara dados do e-mail  
+                    header = header.Replace("{NomeForn}", item.FORNECEDOR.FORN_NM_NOME);
+                    data = data.Replace("{Data}", item.FOME_DT_ENVIO.ToLongDateString());
+                    data = data.Replace("{Texto}", item.FOME_DS_TEXTO);
+
+                    // Concatena
+                    String emailBody = header + body + data;
+
+                    // Prepara e-mail e enviar
+                    CONFIGURACAO conf = _baseService.CarregaConfiguracao(usuario.ASSI_CD_ID);
+                    Email mensagem = new Email();
+                    mensagem.ASSUNTO = "Mensagem para Fornecedor - " + item.FORNECEDOR.FORN_NM_NOME;
+                    mensagem.CORPO = emailBody;
+                    mensagem.DEFAULT_CREDENTIALS = false;
+                    mensagem.EMAIL_DESTINO = item.FORNECEDOR.FORN_NM_EMAIL;
+                    mensagem.EMAIL_EMISSOR = conf.CONF_NM_EMAIL_EMISSOO;
+                    mensagem.ENABLE_SSL = true;
+                    mensagem.NOME_EMISSOR = usuario.USUA_NM_NOME;
+                    mensagem.PORTA = conf.CONF_NM_PORTA_SMTP;
+                    mensagem.PRIORIDADE = System.Net.Mail.MailPriority.High;
+                    mensagem.SENHA_EMISSOR = conf.CONF_NM_SENHA_EMISSOR;
+                    mensagem.SMTP = conf.CONF_NM_HOST_SMTP;
+
+                    // Envia e-mail
+                    Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
+                }
+
+                // Persiste
+                Int32 volta = _baseService.CreateMensagem(item);
+                return volta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

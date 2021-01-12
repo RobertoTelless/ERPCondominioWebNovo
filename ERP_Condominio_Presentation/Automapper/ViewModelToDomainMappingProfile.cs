@@ -40,6 +40,7 @@ namespace MvcMapping.Mappers
             CreateMap<VagaViewModel, VAGA>();
             CreateMap<FornecedorViewModel, FORNECEDOR>();
             CreateMap<FornecedorContatoViewModel, FORNECEDOR_CONTATO>();
+            CreateMap<FornecedorComentarioViewModel, FORNECEDOR_COMENTARIO>();
 
         }
     }

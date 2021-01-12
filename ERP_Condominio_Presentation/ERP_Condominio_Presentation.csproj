@@ -275,6 +275,7 @@
     <Compile Include="Viewmodels\AssinanteViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorContatoViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorViewModel.cs" />
+    <Compile Include="Viewmodels\FornecedorComentarioViewModel.cs" />
     <Compile Include="Viewmodels\VagaViewModel.cs" />
     <Compile Include="Viewmodels\UnidadeViewModel.cs" />
     <Compile Include="Viewmodels\TorreViewModel.cs" />
@@ -2562,6 +2563,7 @@
     <Content Include="Views\Fornecedor\EditarContatoFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\IncluirContatoFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\VerFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\IncluirComentario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

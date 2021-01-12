@@ -40,6 +40,7 @@ namespace EntitiesServices.Model
             this.USUARIO_ANEXO = new HashSet<USUARIO_ANEXO>();
             this.USUARIO_CONTROLE_ENTRADA = new HashSet<USUARIO_CONTROLE_ENTRADA>();
             this.FORNECEDOR_COMENTARIO = new HashSet<FORNECEDOR_COMENTARIO>();
+            this.FORNECEDOR_MENSAGEM = new HashSet<FORNECEDOR_MENSAGEM>();
         }
     
         public int USUA_CD_ID { get; set; }
@@ -133,5 +134,7 @@ namespace EntitiesServices.Model
         public virtual ICollection<USUARIO_CONTROLE_ENTRADA> USUARIO_CONTROLE_ENTRADA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FORNECEDOR_COMENTARIO> FORNECEDOR_COMENTARIO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FORNECEDOR_MENSAGEM> FORNECEDOR_MENSAGEM { get; set; }
     }
 }

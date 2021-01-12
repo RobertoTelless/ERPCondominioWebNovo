@@ -25,9 +25,13 @@ namespace ModelServices.EntitiesServices
         private readonly ITipoPessoaRepository _pesRepository;
         private readonly IFornecedorContatoRepository _contRepository;
         private readonly IUFRepository _ufRepository;
+        private readonly IFornecedorMensagemRepository _mensRepository;
+        private readonly ITipoMensagemRepository _tmRepository;
+        private readonly ITemplateRepository _tpRepository;
+        private readonly IConfiguracaoRepository _conRepository;
         protected ERP_Condominio_DBEntities Db = new ERP_Condominio_DBEntities();
 
-        public FornecedorService(IFornecedorRepository baseRepository, ILogRepository logRepository, ICategoriaFornecedorRepository tipoRepository, IFornecedorAnexoRepository anexoRepository, ITipoPessoaRepository pesRepository, IFornecedorContatoRepository contRepository, IUFRepository ufRepository) : base(baseRepository)
+        public FornecedorService(IFornecedorRepository baseRepository, ILogRepository logRepository, ICategoriaFornecedorRepository tipoRepository, IFornecedorAnexoRepository anexoRepository, ITipoPessoaRepository pesRepository, IFornecedorContatoRepository contRepository, IUFRepository ufRepository, IFornecedorMensagemRepository mensRepository, ITipoMensagemRepository tmRepository, ITemplateRepository tpRepository, IConfiguracaoRepository conRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
@@ -36,12 +40,27 @@ namespace ModelServices.EntitiesServices
             _pesRepository = pesRepository;
             _contRepository = contRepository;
             _ufRepository = ufRepository;
+            _mensRepository = mensRepository;
+            _tmRepository = tmRepository;
+            _tpRepository = tpRepository;
+            _conRepository = conRepository;
         }
 
         public FORNECEDOR CheckExist(FORNECEDOR conta, Int32 idAss)
         {
             FORNECEDOR item = _baseRepository.CheckExist(conta, idAss);
             return item;
+        }
+
+        public TEMPLATE GetTemplate(String code)
+        {
+            return _tpRepository.GetByCode(code);
+        }
+
+        public CONFIGURACAO CarregaConfiguracao(Int32 id)
+        {
+            CONFIGURACAO conf = _conRepository.GetById(id);
+            return conf;
         }
 
         public FORNECEDOR GetItemById(Int32 id)
@@ -78,6 +97,11 @@ namespace ModelServices.EntitiesServices
         public List<CATEGORIA_FORNECEDOR> GetAllCategorias(Int32 idAss)
         {
             return _tipoRepository.GetAllItens(idAss);
+        }
+
+        public List<TIPO_MENSAGEM> GetAllTiposMensagem()
+        {
+            return _tmRepository.GetAllItens();
         }
 
         public FORNECEDOR_ANEXO GetAnexoById(Int32 id)
@@ -236,5 +260,49 @@ namespace ModelServices.EntitiesServices
                 }
             }
         }
+
+        public FORNECEDOR_MENSAGEM GetMensagemById(Int32 id)
+        {
+            return _mensRepository.GetItemById(id);
+        }
+
+        public Int32 EditMensagem(FORNECEDOR_MENSAGEM item)
+        {
+            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    FORNECEDOR_MENSAGEM obj = _mensRepository.GetById(item.FOME_CD_ID);
+                    _mensRepository.Detach(obj);
+                    _mensRepository.Update(item);
+                    transaction.Commit();
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+        }
+
+        public Int32 CreateMensagem(FORNECEDOR_MENSAGEM item)
+        {
+            using (DbContextTransaction transaction = Db.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    _mensRepository.Add(item);
+                    transaction.Commit();
+                    return 0;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

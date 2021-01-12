@@ -530,6 +530,7 @@ namespace ERP_Condominio_Presentation.Controllers
             Session["Fornecedor"] = item;
             Session["IdVolta"] = id;
             Session["VoltaCEP"] = 1;
+            Session["Ver"] = 2;
             FornecedorViewModel vm = Mapper.Map<FORNECEDOR, FornecedorViewModel>(item);
             return View(vm);
         }
@@ -1959,9 +1960,64 @@ namespace ERP_Condominio_Presentation.Controllers
                 return RedirectToAction("Login", "ControleAcesso");
             }
             Session["IdVolta"] = id;
+            Session["Ver"] = 1;
             FORNECEDOR item = fornApp.GetItemById(id);
             FornecedorViewModel vm = Mapper.Map<FORNECEDOR, FornecedorViewModel>(item);
             return View(vm);
+        }
+
+        [HttpGet]
+        public ActionResult IncluirComentario()
+        {
+            FORNECEDOR item = fornApp.GetItemById((Int32)Session["IdVolta"]);
+            USUARIO usuario = (USUARIO)Session["UserCredentials"];
+            FORNECEDOR_COMENTARIO coment = new FORNECEDOR_COMENTARIO();
+            FornecedorComentarioViewModel vm = Mapper.Map<FORNECEDOR_COMENTARIO, FornecedorComentarioViewModel>(coment);
+            vm.FOCM_DT_COMENTARIO = DateTime.Today;
+            vm.FOCM_IN_ATIVO = 1;
+            vm.FORN_CD_ID = item.FORN_CD_ID;
+            vm.USUARIO = usuario;
+            vm.USUA_CD_ID = usuario.USUA_CD_ID;
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IncluirComentario(FornecedorComentarioViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Executa a operação
+                    FORNECEDOR_COMENTARIO item = Mapper.Map<FornecedorComentarioViewModel, FORNECEDOR_COMENTARIO>(vm);
+                    USUARIO usuario = (USUARIO)Session["UserCredentials"];
+                    FORNECEDOR not = fornApp.GetItemById((Int32)Session["IdVolta"]);
+
+                    item.USUARIO = null;
+                    not.FORNECEDOR_COMENTARIO.Add(item);
+                    objetoFornAntes = not;
+                    Int32 volta = fornApp.ValidateEdit(not, objetoFornAntes);
+
+                    // Verifica retorno
+
+                    // Sucesso
+                    if ((Int32)Session["Ver"] == 1)
+                    {
+                        return RedirectToAction("VerFornecedor", new { id = (Int32)Session["IdVolta"] });
+                    }
+                    return RedirectToAction("EditarFornecedor", new { id = (Int32)Session["IdVolta"] });
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message;
+                    return View(vm);
+                }
+            }
+            else
+            {
+                return View(vm);
+            }
         }
 
     }
