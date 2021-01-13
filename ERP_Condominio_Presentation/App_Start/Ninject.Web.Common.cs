@@ -150,6 +150,8 @@ namespace Presentation.Start
             kernel.Bind<IFornecedorAnexoRepository>().To<FornecedorAnexoRepository>();
             kernel.Bind<IFornecedorContatoRepository>().To<FornecedorContatoRepository>();
             kernel.Bind<IFornecedorCnpjRepository>().To<FornecedorCnpjRepository>();
+            kernel.Bind<IFornecedorMensagemRepository>().To<FornecedorMensagemRepository>();
+            kernel.Bind<ITipoMensagemRepository>().To<TipoMensagemRepository>();
 
         }
     }

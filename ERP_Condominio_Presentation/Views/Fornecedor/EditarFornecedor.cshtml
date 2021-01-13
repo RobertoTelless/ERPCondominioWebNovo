@@ -69,7 +69,8 @@
                 <div class="ibox-content">
                     <div class="form-group">
                         <br />
-                        @Html.ButtonLinkIndex(text: "Mensagens", action: "MensagensFornecedor", controller: "Fornecedor")
+                        @Html.ButtonLinkIndex(text: "Enviar Mensagem", action: "IncluirMensagem", controller: "Fornecedor")
+                        @Html.ButtonLinkIndex(text: "Ver Mensagens Anteriores", action: "VerMensagensFornecedor", controller: "Fornecedor")
                         @Html.ButtonLinkIndex(text: "Gerar Relatório", action: "GerarRelatorioDetalhe", controller: "Fornecedor")
                         @Html.ButtonLinkIndex(text: "Voltar", action: "VoltarBaseFornecedor", controller: "Fornecedor")
                     </div>

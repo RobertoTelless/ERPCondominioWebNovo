@@ -1969,8 +1969,29 @@ namespace ERP_Condominio_Presentation.Controllers
         [HttpGet]
         public ActionResult IncluirComentario()
         {
+            // Verifica se tem usuario logado
+            if ((String)Session["Ativa"] == null)
+            {
+                return RedirectToAction("Login", "ControleAcesso");
+            }
+            Int32 idAss = (Int32)Session["IdAssinante"];
+            USUARIO usuario = new USUARIO();
+            if ((USUARIO)Session["UserCredentials"] != null)
+            {
+                usuario = (USUARIO)Session["UserCredentials"];
+                // Verfifica permissão
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
+                {
+                    Session["MensFornecedor"] = 2;
+                    return RedirectToAction("VoltarAnexoFornecedor");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "ControleAcesso");
+            }
+
             FORNECEDOR item = fornApp.GetItemById((Int32)Session["IdVolta"]);
-            USUARIO usuario = (USUARIO)Session["UserCredentials"];
             FORNECEDOR_COMENTARIO coment = new FORNECEDOR_COMENTARIO();
             FornecedorComentarioViewModel vm = Mapper.Map<FORNECEDOR_COMENTARIO, FornecedorComentarioViewModel>(coment);
             vm.FOCM_DT_COMENTARIO = DateTime.Today;
@@ -2020,5 +2041,93 @@ namespace ERP_Condominio_Presentation.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult IncluirMensagem()
+        {
+            // Verifica se tem usuario logado
+            if ((String)Session["Ativa"] == null)
+            {
+                return RedirectToAction("Login", "ControleAcesso");
+            }
+            Int32 idAss = (Int32)Session["IdAssinante"];
+            USUARIO usuario = new USUARIO();
+            if ((USUARIO)Session["UserCredentials"] != null)
+            {
+                usuario = (USUARIO)Session["UserCredentials"];
+                // Verfifica permissão
+                if (usuario.PERFIL.PERF_SG_SIGLA != "ADM" || usuario.PERFIL.PERF_SG_SIGLA != "SIN" || usuario.PERFIL.PERF_SG_SIGLA != "CON")
+                {
+                    Session["MensFornecedor"] = 2;
+                    return RedirectToAction("VoltarAnexoFornecedor");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "ControleAcesso");
+            }
+
+            ViewBag.Tipos = new SelectList(fornApp.GetAllTiposMensagem(), "TIME_CD_ID", "TIME_NM_NOME");
+
+            FORNECEDOR item = fornApp.GetItemById((Int32)Session["IdVolta"]);
+            FORNECEDOR_MENSAGEM mens = new FORNECEDOR_MENSAGEM();
+            FornecedorMensagemViewModel vm = Mapper.Map<FORNECEDOR_MENSAGEM, FornecedorMensagemViewModel>(mens);
+            vm.FOME_DT_ENVIO = DateTime.Today;
+            vm.FOME_IN_ATIVO = 1;
+            vm.FORN_CD_ID = item.FORN_CD_ID;
+            vm.USUARIO = usuario;
+            vm.USUA_CD_ID = usuario.USUA_CD_ID;
+            vm.FOME_IN_ENVIADO = 0;
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult IncluirMensagem(FornecedorMensagemViewModel vm)
+        {
+            ViewBag.Tipos = new SelectList(fornApp.GetAllTiposMensagem(), "TIME_CD_ID", "TIME_NM_NOME");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Executa a operação
+                    FORNECEDOR_MENSAGEM item = Mapper.Map<FornecedorMensagemViewModel, FORNECEDOR_MENSAGEM>(vm);
+                    USUARIO usuario = (USUARIO)Session["UserCredentials"];
+                    FORNECEDOR forn = fornApp.GetItemById((Int32)Session["IdVolta"]);
+                    Int32 volta = fornApp.ValidateCreateMensagem(item, usuario);
+
+                    // Verifica retorno
+                    if ((Int32)Session["Ver"] == 1)
+                    {
+                        return RedirectToAction("VerFornecedor", new { id = (Int32)Session["IdVolta"] });
+                    }
+                    return RedirectToAction("EditarFornecedor", new { id = (Int32)Session["IdVolta"] });
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message;
+                    return View(vm);
+                }
+            }
+            else
+            {
+                return View(vm);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult VerMensagensFornecedor(Int32 id)
+        {
+            if ((String)Session["Ativa"] == null)
+            {
+                return RedirectToAction("Login", "ControleAcesso");
+            }
+            Session["IdVolta"] = id;
+            Session["Ver"] = 1;
+            FORNECEDOR item = fornApp.GetItemById(id);
+            FornecedorViewModel vm = Mapper.Map<FORNECEDOR, FornecedorViewModel>(item);
+            ViewBag.Lista = item.FORNECEDOR_MENSAGEM;
+            ViewBag.Mens = item.FORNECEDOR_MENSAGEM.Count;
+            return View(vm);
+        }
     }
 }

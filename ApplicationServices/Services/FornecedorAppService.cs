@@ -380,6 +380,7 @@ namespace ApplicationServices.Services
                 log.LOG_TX_REGISTRO = registro;
                 log.LOG_IN_ATIVO = 1;
 
+                // Processa e-mail
                 if (item.TIME_CD_ID == 1)
                 {
                     // Recupera template e-mail
@@ -388,9 +389,11 @@ namespace ApplicationServices.Services
                     String data = _baseService.GetTemplate("MSGFOR").TEMP_TX_DADOS;
 
                     // Prepara dados do e-mail  
-                    header = header.Replace("{NomeForn}", item.FORNECEDOR.FORN_NM_NOME);
+                    header = header.Replace("{Nome}", item.FORNECEDOR.FORN_NM_NOME);
+                    body = body.Replace("{Texto}", item.FOME_DS_TEXTO);
+                    body = body.Replace("{Condominio}", item.USUARIO.ASSINANTE.ASSI_NM_NOME);
                     data = data.Replace("{Data}", item.FOME_DT_ENVIO.ToLongDateString());
-                    data = data.Replace("{Texto}", item.FOME_DS_TEXTO);
+                    data = data.Replace("{Usuario}", item.USUARIO.USUA_NM_NOME);
 
                     // Concatena
                     String emailBody = header + body + data;
@@ -413,9 +416,19 @@ namespace ApplicationServices.Services
                     // Envia e-mail
                     Int32 voltaMail = CommunicationPackage.SendEmail(mensagem);
                 }
+                else if (item.TIME_CD_ID == 2)
+                {
+                    // Processa SMS
+
+                }
+                else
+                {
+                    // Processa WhatsApp
+                }
 
                 // Persiste
-                Int32 volta = _baseService.CreateMensagem(item);
+                item.FOME_IN_ENVIADO = 1;
+                Int32 volta = _baseService.CreateMensagem(item);             
                 return volta;
             }
             catch (Exception ex)

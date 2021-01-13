@@ -273,6 +273,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Viewmodels\AgendaViewModel.cs" />
     <Compile Include="Viewmodels\AssinanteViewModel.cs" />
+    <Compile Include="Viewmodels\FornecedorMensagemViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorContatoViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorComentarioViewModel.cs" />
@@ -2564,6 +2565,8 @@
     <Content Include="Views\Fornecedor\IncluirContatoFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\VerFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\IncluirComentario.cshtml" />
+    <Content Include="Views\Fornecedor\IncluirMensagem.cshtml" />
+    <Content Include="Views\Fornecedor\VerMensagensFornecedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
