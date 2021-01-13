@@ -30,6 +30,8 @@ namespace EntitiesServices.Model
         public Nullable<int> CONF_NR_REFRESH_DASH { get; set; }
         public string CONF_NM_ARQUIVO_ALARME { get; set; }
         public Nullable<int> CONF_NR_REFRESH_NOTIFICACAO { get; set; }
+        public Nullable<int> CONF_NR_NUMERO_CONSELHEIROS { get; set; }
+        public Nullable<int> CONF_NR_CORPO_DIRETIVO_PERIODO { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

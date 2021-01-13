@@ -218,6 +218,8 @@
           <Property Name="CONF_NR_REFRESH_DASH" Type="int" />
           <Property Name="CONF_NM_ARQUIVO_ALARME" Type="varchar" MaxLength="50" />
           <Property Name="CONF_NR_REFRESH_NOTIFICACAO" Type="int" />
+          <Property Name="CONF_NR_NUMERO_CONSELHEIROS" Type="int" />
+          <Property Name="CONF_NR_CORPO_DIRETIVO_PERIODO" Type="int" />
         </EntityType>
         <EntityType Name="CONFIGURACAO_ASSOCIACAO">
           <Key>
@@ -265,12 +267,13 @@
           <Property Name="CODI_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ASSI_CD_ID" Type="int" Nullable="false" />
           <Property Name="FUCO_CD_ID" Type="int" Nullable="false" />
+          <Property Name="USUA_CD_ID" Type="int" />
           <Property Name="CODI_DT_INICIO" Type="date" Nullable="false" />
           <Property Name="CODI_DT_FINAL" Type="date" />
-          <Property Name="CODI_TX_OBSERVACOES" Type="text" />
+          <Property Name="CODI_DT_SAIDA_REAL" Type="date" />
           <Property Name="CODI_DT_CADASTRO" Type="date" Nullable="false" />
+          <Property Name="CODI_TX_OBSERVACOES" Type="text" />
           <Property Name="CODI_IN_ATIVO" Type="int" Nullable="false" />
-          <Property Name="USUA_CD_ID" Type="int" />
         </EntityType>
         <EntityType Name="ENCOMENDA">
           <Key>
@@ -3263,6 +3266,8 @@
           <Property Name="CONF_NR_REFRESH_NOTIFICACAO" Type="Int32" />
           <NavigationProperty Name="ASSINANTE" Relationship="Self.FK_CONFIGURACAO_ASSINANTE" FromRole="CONFIGURACAO" ToRole="ASSINANTE" />
           <NavigationProperty Name="CONFIGURACAO_ASSOCIACAO" Relationship="Self.FK_CONFIGURACAO_ASSOCIACAO_CONFIGURACAO" FromRole="CONFIGURACAO" ToRole="CONFIGURACAO_ASSOCIACAO" />
+          <Property Name="CONF_NR_NUMERO_CONSELHEIROS" Type="Int32" />
+          <Property Name="CONF_NR_CORPO_DIRETIVO_PERIODO" Type="Int32" />
         </EntityType>
         <EntityType Name="CONFIGURACAO_ASSOCIACAO">
           <Key>
@@ -3324,6 +3329,7 @@
           <NavigationProperty Name="ASSINANTE" Relationship="Self.FK_CORPO_DIRETIVO_ASSINANTE" FromRole="CORPO_DIRETIVO" ToRole="ASSINANTE" />
           <NavigationProperty Name="FUNCAO_CORPO_DIRETIVO" Relationship="Self.FK_CORPO_DIRETIVO_FUNCAO_CORPO_DIRETIVO" FromRole="CORPO_DIRETIVO" ToRole="FUNCAO_CORPO_DIRETIVO" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_CORPO_DIRETIVO_USUARIO" FromRole="CORPO_DIRETIVO" ToRole="USUARIO" />
+          <Property Name="CODI_DT_SAIDA_REAL" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="ENCOMENDA">
           <Key>
@@ -6417,6 +6423,8 @@
           <EntitySetMapping Name="CONFIGURACAO">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.CONFIGURACAO">
               <MappingFragment StoreEntitySet="CONFIGURACAO">
+                <ScalarProperty Name="CONF_NR_CORPO_DIRETIVO_PERIODO" ColumnName="CONF_NR_CORPO_DIRETIVO_PERIODO" />
+                <ScalarProperty Name="CONF_NR_NUMERO_CONSELHEIROS" ColumnName="CONF_NR_NUMERO_CONSELHEIROS" />
                 <ScalarProperty Name="CONF_CD_ID" ColumnName="CONF_CD_ID" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="CONF_NR_FALHAS_DIA" ColumnName="CONF_NR_FALHAS_DIA" />
@@ -6475,6 +6483,7 @@
           <EntitySetMapping Name="CORPO_DIRETIVO">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.CORPO_DIRETIVO">
               <MappingFragment StoreEntitySet="CORPO_DIRETIVO">
+                <ScalarProperty Name="CODI_DT_SAIDA_REAL" ColumnName="CODI_DT_SAIDA_REAL" />
                 <ScalarProperty Name="CODI_CD_ID" ColumnName="CODI_CD_ID" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="FUCO_CD_ID" ColumnName="FUCO_CD_ID" />

@@ -227,6 +227,11 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
             ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
             ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
+            List<SelectListItem> prop = new List<SelectListItem>();
+            prop.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+            prop.Add(new SelectListItem() { Text = "Não", Value = "0" });
+            prop[0].Selected = true;
+            ViewBag.Prop = new SelectList(prop, "Value", "Text");
 
             // Prepara view
             USUARIO item = new USUARIO();
@@ -249,6 +254,11 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
             ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
             ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
+            List<SelectListItem> prop = new List<SelectListItem>();
+            prop.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+            prop.Add(new SelectListItem() { Text = "Não", Value = "0" });
+            prop[0].Selected = true;
+            ViewBag.Prop = new SelectList(prop, "Value", "Text");
             if (ModelState.IsValid)
             {
                 try
@@ -361,6 +371,11 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
             ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
             ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
+            List<SelectListItem> prop = new List<SelectListItem>();
+            prop.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+            prop.Add(new SelectListItem() { Text = "Não", Value = "0" });
+            prop[0].Selected = true;
+            ViewBag.Prop = new SelectList(prop, "Value", "Text");
 
             USUARIO item = baseApp.GetItemById(id);
             objetoAntes = item;
@@ -383,6 +398,11 @@ namespace ERP_Condominio_Presentation.Controllers
             ViewBag.Cats = new SelectList(baseApp.GetAllTipos(idAss), "CAUS_CD_ID", "CAUS_NM_NOME");
             ViewBag.Cargos = new SelectList(baseApp.GetAllCargos(idAss), "CARG_CD_ID", "CARG_NM_NOME");
             ViewBag.Unids = new SelectList(baseApp.GetAllUnidades(idAss), "UNID_CD_ID", "UNID_NM_EXIBE");
+            List<SelectListItem> prop = new List<SelectListItem>();
+            prop.Add(new SelectListItem() { Text = "Sim", Value = "1" });
+            prop.Add(new SelectListItem() { Text = "Não", Value = "0" });
+            prop[0].Selected = true;
+            ViewBag.Prop = new SelectList(prop, "Value", "Text");
             if (ModelState.IsValid)
             {
                 try

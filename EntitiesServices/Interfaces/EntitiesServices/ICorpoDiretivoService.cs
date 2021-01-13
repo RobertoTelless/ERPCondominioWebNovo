@@ -21,5 +21,6 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<CORPO_DIRETIVO> GetAllItensAdm(Int32 idAss);
         List<FUNCAO_CORPO_DIRETIVO> GetAllFuncoes(Int32 idAss);
         List<USUARIO> GetAllUsuarios(Int32 idAss);
+        CONFIGURACAO CarregaConfiguracao(Int32 id);
     }
 }

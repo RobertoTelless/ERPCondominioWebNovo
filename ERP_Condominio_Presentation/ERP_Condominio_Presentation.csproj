@@ -251,6 +251,7 @@
     <Compile Include="Controllers\BaseAdminController.cs" />
     <Compile Include="Controllers\ConfiguracaoController.cs" />
     <Compile Include="Controllers\ControleAcessoController.cs" />
+    <Compile Include="Controllers\CorpoDiretivoController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="Viewmodels\FornecedorContatoViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorViewModel.cs" />
     <Compile Include="Viewmodels\FornecedorComentarioViewModel.cs" />
+    <Compile Include="Viewmodels\CorpoDiretivoViewModel.cs" />
     <Compile Include="Viewmodels\VagaViewModel.cs" />
     <Compile Include="Viewmodels\UnidadeViewModel.cs" />
     <Compile Include="Viewmodels\TorreViewModel.cs" />
@@ -2567,6 +2569,7 @@
     <Content Include="Views\Fornecedor\IncluirComentario.cshtml" />
     <Content Include="Views\Fornecedor\IncluirMensagem.cshtml" />
     <Content Include="Views\Fornecedor\VerMensagensFornecedor.cshtml" />
+    <Content Include="Views\CorpoDiretivo\MontarTelaQuadroSocietario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

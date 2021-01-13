@@ -22,20 +22,28 @@ namespace ModelServices.EntitiesServices
         private readonly ILogRepository _logRepository;
         private readonly IFuncaoCorpoDiretivoRepository _funRepository;
         private readonly IUsuarioRepository _usuRepository;
+        private readonly IConfiguracaoRepository _conRepository;
         protected ERP_Condominio_DBEntities Db = new ERP_Condominio_DBEntities();
 
-        public CorpoDiretivoService(ICorpoDiretivoRepository baseRepository, ILogRepository logRepository, IFuncaoCorpoDiretivoRepository funRepository, IUsuarioRepository usuRepository) : base(baseRepository)
+        public CorpoDiretivoService(ICorpoDiretivoRepository baseRepository, ILogRepository logRepository, IFuncaoCorpoDiretivoRepository funRepository, IUsuarioRepository usuRepository, IConfiguracaoRepository confRepository) : base(baseRepository)
         {
             _baseRepository = baseRepository;
             _logRepository = logRepository;
             _funRepository = funRepository;
             _usuRepository = usuRepository;
+            _conRepository = confRepository;
         }
 
         public CORPO_DIRETIVO GetItemById(Int32 id)
         {
             CORPO_DIRETIVO item = _baseRepository.GetItemById(id);
             return item;
+        }
+
+        public CONFIGURACAO CarregaConfiguracao(Int32 id)
+        {
+            CONFIGURACAO conf = _conRepository.GetById(id);
+            return conf;
         }
 
         public List<CORPO_DIRETIVO> GetAllItens(Int32 idAss)

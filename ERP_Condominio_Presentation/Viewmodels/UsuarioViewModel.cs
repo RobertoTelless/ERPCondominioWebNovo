@@ -76,6 +76,7 @@ namespace ERP_Condominio.ViewModels
         public Nullable<System.DateTime> USUA_DT_SAIDA { get; set; }
         [StringLength(200, ErrorMessage = "O MOTIVO DA SAÌDA deve ter no máximo 200 caracteres.")]
         public string USUA_DS_MOTIVO_SAIDA { get; set; }
+        public Nullable<int> USUA_IN_PROPRIETARIO { get; set; }
 
 
         public bool Bloqueio

@@ -23,6 +23,7 @@ namespace EntitiesServices.Model
         public System.DateTime CODI_DT_CADASTRO { get; set; }
         public int CODI_IN_ATIVO { get; set; }
         public Nullable<int> USUA_CD_ID { get; set; }
+        public Nullable<System.DateTime> CODI_DT_SAIDA_REAL { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         public virtual FUNCAO_CORPO_DIRETIVO FUNCAO_CORPO_DIRETIVO { get; set; }
