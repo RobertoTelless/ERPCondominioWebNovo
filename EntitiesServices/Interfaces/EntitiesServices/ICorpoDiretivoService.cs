@@ -22,5 +22,6 @@ namespace ModelServices.Interfaces.EntitiesServices
         List<FUNCAO_CORPO_DIRETIVO> GetAllFuncoes(Int32 idAss);
         List<USUARIO> GetAllUsuarios(Int32 idAss);
         CONFIGURACAO CarregaConfiguracao(Int32 id);
+        List<TIPO_MENSAGEM> GetAllTipos();
     }
 }

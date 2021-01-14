@@ -234,10 +234,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\ERP_Condominio.Designer.cs">
+    <Compile Include="App_Start\ERP_Condominio_Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ERP_Condominio.resx</DependentUpon>
+      <DependentUpon>ERP_Condominio_Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
@@ -2569,7 +2569,10 @@
     <Content Include="Views\Fornecedor\IncluirComentario.cshtml" />
     <Content Include="Views\Fornecedor\IncluirMensagem.cshtml" />
     <Content Include="Views\Fornecedor\VerMensagensFornecedor.cshtml" />
-    <Content Include="Views\CorpoDiretivo\MontarTelaQuadroSocietario.cshtml" />
+    <Content Include="Views\CorpoDiretivo\IncluirCorpoDiretivo.cshtml" />
+    <Content Include="Views\CorpoDiretivo\MontarTelaCorpoDiretivo.cshtml" />
+    <Content Include="Views\CorpoDiretivo\MontarTelaCorpoDiretivoHistorico.cshtml" />
+    <Content Include="Views\CorpoDiretivo\VerMembroCorpoDiretivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2607,9 +2610,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_Start\ERP_Condominio.resx">
+    <EmbeddedResource Include="App_Start\ERP_Condominio_Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ERP_Condominio.Designer.cs</LastGenOutput>
+      <LastGenOutput>ERP_Condominio_Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -460,11 +460,12 @@
           </Key>
           <Property Name="GRUP_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ASSI_CD_ID" Type="int" Nullable="false" />
+          <Property Name="TIGR_CD_ID" Type="int" />
           <Property Name="GRUP_NM_NOME" Type="varchar" MaxLength="50" />
-          <Property Name="GRUP_IN_ATIVO" Type="int" />
+          <Property Name="GRUP_DS_DESCRICAO" Type="varchar" MaxLength="500" />
           <Property Name="GRUP_NR_NUMERO" Type="varchar" MaxLength="10" />
           <Property Name="GR_NM_EXIBE" Type="varchar" MaxLength="63" StoreGeneratedPattern="Computed" />
-          <Property Name="GRUP_DS_DESCRICAO" Type="varchar" MaxLength="500" />
+          <Property Name="GRUP_IN_ATIVO" Type="int" />
         </EntityType>
         <EntityType Name="LISTA_CONVIDADO">
           <Key>
@@ -816,6 +817,15 @@
           <Property Name="TIEN_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TIEN_NM_NOME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TIEN_IN_ATIVO" Type="int" />
+        </EntityType>
+        <EntityType Name="TIPO_GRUPO">
+          <Key>
+            <PropertyRef Name="TIGR_CD_ID" />
+          </Key>
+          <Property Name="TIGR_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASSI_CD_ID" Type="int" Nullable="false" />
+          <Property Name="TIGR_NM_NOME" Type="varchar" MaxLength="50" />
+          <Property Name="TIGR_IN_ATIVO" Type="int" />
         </EntityType>
         <EntityType Name="TIPO_MENSAGEM">
           <Key>
@@ -1634,6 +1644,18 @@
             </Principal>
             <Dependent Role="GRUPO">
               <PropertyRef Name="ASSI_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GRUPO_TIPO_GRUPO">
+          <End Role="TIPO_GRUPO" Type="Self.TIPO_GRUPO" Multiplicity="0..1" />
+          <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_GRUPO">
+              <PropertyRef Name="TIGR_CD_ID" />
+            </Principal>
+            <Dependent Role="GRUPO">
+              <PropertyRef Name="TIGR_CD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2490,6 +2512,7 @@
           <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_AMBIENTE" EntityType="Self.TIPO_AMBIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_ENCOMENDA" EntityType="Self.TIPO_ENCOMENDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_GRUPO" EntityType="Self.TIPO_GRUPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_MENSAGEM" EntityType="Self.TIPO_MENSAGEM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_PESSOA" EntityType="Self.TIPO_PESSOA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_TAREFA" EntityType="Self.TIPO_TAREFA" Schema="dbo" store:Type="Tables" />
@@ -2714,6 +2737,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_GRUPO_ASSINANTE" Association="Self.FK_GRUPO_ASSINANTE">
             <End Role="ASSINANTE" EntitySet="ASSINANTE" />
+            <End Role="GRUPO" EntitySet="GRUPO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GRUPO_TIPO_GRUPO" Association="Self.FK_GRUPO_TIPO_GRUPO">
+            <End Role="TIPO_GRUPO" EntitySet="TIPO_GRUPO" />
             <End Role="GRUPO" EntitySet="GRUPO" />
           </AssociationSet>
           <AssociationSet Name="FK_LISTA_CONVIDADO_ASSINANTE" Association="Self.FK_LISTA_CONVIDADO_ASSINANTE">
@@ -3525,6 +3552,8 @@
           <Property Name="GRUP_DS_DESCRICAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ASSINANTE" Relationship="Self.FK_GRUPO_ASSINANTE" FromRole="GRUPO" ToRole="ASSINANTE" />
           <NavigationProperty Name="SUBGRUPO" Relationship="Self.FK_SUBGRUPO_GRUPO" FromRole="GRUPO" ToRole="SUBGRUPO" />
+          <Property Name="TIGR_CD_ID" Type="Int32" />
+          <NavigationProperty Name="TIPO_GRUPO" Relationship="ERP_Condominio_DBModel.FK_GRUPO_TIPO_GRUPO" FromRole="GRUPO" ToRole="TIPO_GRUPO" />
         </EntityType>
         <EntityType Name="LISTA_CONVIDADO">
           <Key>
@@ -6100,6 +6129,11 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="FORNECEDOR_MENSAGEM" EntitySet="FORNECEDOR_MENSAGEM" />
           </AssociationSet>
+          <EntitySet Name="TIPO_GRUPO" EntityType="ERP_Condominio_DBModel.TIPO_GRUPO" />
+          <AssociationSet Name="FK_GRUPO_TIPO_GRUPO" Association="ERP_Condominio_DBModel.FK_GRUPO_TIPO_GRUPO">
+            <End Role="TIPO_GRUPO" EntitySet="TIPO_GRUPO" />
+            <End Role="GRUPO" EntitySet="GRUPO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="FORNECEDOR_COMENTARIO">
           <Key>
@@ -6196,6 +6230,28 @@
             </Principal>
             <Dependent Role="FORNECEDOR_MENSAGEM">
               <PropertyRef Name="USUA_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TIPO_GRUPO">
+          <Key>
+            <PropertyRef Name="TIGR_CD_ID" />
+          </Key>
+          <Property Name="TIGR_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASSI_CD_ID" Type="Int32" Nullable="false" />
+          <Property Name="TIGR_NM_NOME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIGR_IN_ATIVO" Type="Int32" />
+          <NavigationProperty Name="GRUPO" Relationship="ERP_Condominio_DBModel.FK_GRUPO_TIPO_GRUPO" FromRole="TIPO_GRUPO" ToRole="GRUPO" />
+        </EntityType>
+        <Association Name="FK_GRUPO_TIPO_GRUPO">
+          <End Type="ERP_Condominio_DBModel.TIPO_GRUPO" Role="TIPO_GRUPO" Multiplicity="0..1" />
+          <End Type="ERP_Condominio_DBModel.GRUPO" Role="GRUPO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_GRUPO">
+              <PropertyRef Name="TIGR_CD_ID" />
+            </Principal>
+            <Dependent Role="GRUPO">
+              <PropertyRef Name="TIGR_CD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6665,6 +6721,7 @@
           <EntitySetMapping Name="GRUPO">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.GRUPO">
               <MappingFragment StoreEntitySet="GRUPO">
+                <ScalarProperty Name="TIGR_CD_ID" ColumnName="TIGR_CD_ID" />
                 <ScalarProperty Name="GRUP_CD_ID" ColumnName="GRUP_CD_ID" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="GRUP_NM_NOME" ColumnName="GRUP_NM_NOME" />
@@ -7272,6 +7329,16 @@
                 <ScalarProperty Name="TIME_IN_ATIVO" ColumnName="TIME_IN_ATIVO" />
                 <ScalarProperty Name="TIME_NM_NOME" ColumnName="TIME_NM_NOME" />
                 <ScalarProperty Name="TIME_CD_ID" ColumnName="TIME_CD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_GRUPO">
+            <EntityTypeMapping TypeName="ERP_Condominio_DBModel.TIPO_GRUPO">
+              <MappingFragment StoreEntitySet="TIPO_GRUPO">
+                <ScalarProperty Name="TIGR_IN_ATIVO" ColumnName="TIGR_IN_ATIVO" />
+                <ScalarProperty Name="TIGR_NM_NOME" ColumnName="TIGR_NM_NOME" />
+                <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
+                <ScalarProperty Name="TIGR_CD_ID" ColumnName="TIGR_CD_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

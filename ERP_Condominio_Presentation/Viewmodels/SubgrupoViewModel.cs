@@ -25,7 +25,6 @@ namespace ERP_Condominio.ViewModels
 
         public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLASSE> CLASSE { get; set; }
         public virtual GRUPO GRUPO { get; set; }
     }
 }

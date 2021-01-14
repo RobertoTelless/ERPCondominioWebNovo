@@ -198,6 +198,8 @@
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_FORNECEDOR" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_TIPO_MENSAGEM" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_USUARIO" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_GRUPO" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_GRUPO_TIPO_GRUPO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

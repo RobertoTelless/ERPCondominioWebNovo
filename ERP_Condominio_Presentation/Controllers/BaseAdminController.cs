@@ -123,6 +123,7 @@ namespace ERP_Condominio_Presentation.Controllers
             Session["MensTab"] = 0;
             Session["MensUnidade"] = 0;
             Session["MensFornecedor"] = 0;
+            Session["MensCD"] = 0;
 
             USUARIO usu = (USUARIO)Session["Usuario"];
             UsuarioViewModel vm = Mapper.Map<USUARIO, UsuarioViewModel>(usu);

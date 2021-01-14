@@ -435,6 +435,9 @@
     <Compile Include="Model\TIPO_ENCOMENDA.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TIPO_GRUPO.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TIPO_MENSAGEM.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>

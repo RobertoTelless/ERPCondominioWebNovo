@@ -19,6 +19,8 @@ namespace ApplicationServices.Interfaces
         List<CORPO_DIRETIVO> GetAllItensAdm(Int32 idAss);
         CORPO_DIRETIVO GetItemById(Int32 id);
 
-        List<FUNCAO_CORPO_DIRETIVO> GetAllFuncoes(Int32 idAss); 
+        List<FUNCAO_CORPO_DIRETIVO> GetAllFuncoes(Int32 idAss);
+        List<TIPO_MENSAGEM> GetAllTipos();
+        CONFIGURACAO CarregaConfiguracao(Int32 id);
     }
 }

@@ -12,26 +12,20 @@ namespace EntitiesServices.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GRUPO
+    public partial class TIPO_GRUPO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GRUPO()
+        public TIPO_GRUPO()
         {
-            this.SUBGRUPO = new HashSet<SUBGRUPO>();
+            this.GRUPO = new HashSet<GRUPO>();
         }
     
-        public int GRUP_CD_ID { get; set; }
+        public int TIGR_CD_ID { get; set; }
         public int ASSI_CD_ID { get; set; }
-        public string GRUP_NM_NOME { get; set; }
-        public Nullable<int> GRUP_IN_ATIVO { get; set; }
-        public string GRUP_NR_NUMERO { get; set; }
-        public string GR_NM_EXIBE { get; set; }
-        public string GRUP_DS_DESCRICAO { get; set; }
-        public Nullable<int> TIGR_CD_ID { get; set; }
+        public string TIGR_NM_NOME { get; set; }
+        public Nullable<int> TIGR_IN_ATIVO { get; set; }
     
-        public virtual ASSINANTE ASSINANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUBGRUPO> SUBGRUPO { get; set; }
-        public virtual TIPO_GRUPO TIPO_GRUPO { get; set; }
+        public virtual ICollection<GRUPO> GRUPO { get; set; }
     }
 }

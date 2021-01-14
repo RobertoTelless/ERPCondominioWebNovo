@@ -99,5 +99,6 @@ namespace EntitiesServices.Model
         public virtual DbSet<FORNECEDOR_COMENTARIO> FORNECEDOR_COMENTARIO { get; set; }
         public virtual DbSet<FORNECEDOR_MENSAGEM> FORNECEDOR_MENSAGEM { get; set; }
         public virtual DbSet<TIPO_MENSAGEM> TIPO_MENSAGEM { get; set; }
+        public virtual DbSet<TIPO_GRUPO> TIPO_GRUPO { get; set; }
     }
 }

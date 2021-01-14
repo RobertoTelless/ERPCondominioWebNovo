@@ -228,6 +228,18 @@
   <data name="M0038" xml:space="preserve">
     <value>Já existe um síndico ativo. Impossível cadastrar outro</value>
   </data>
+  <data name="M0039" xml:space="preserve">
+    <value>Já existe um sub-síndico cadastrado. Impossível cadastrar outro</value>
+  </data>
+  <data name="M0040" xml:space="preserve">
+    <value>Número de conselheiros atingiu o limite estabelecido pelo condomínio. Impossível cadastra outro</value>
+  </data>
+  <data name="M0041" xml:space="preserve">
+    <value>Esse morador já faz parte do quadro diretor.</value>
+  </data>
+  <data name="M0042" xml:space="preserve">
+    <value>Data inicial superior a data corrente</value>
+  </data>
   <data name="M0073" xml:space="preserve">
     <value>A Senha não pode ficar em branco</value>
   </data>

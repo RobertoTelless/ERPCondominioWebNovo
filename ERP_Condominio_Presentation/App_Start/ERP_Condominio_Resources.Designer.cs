@@ -22,14 +22,14 @@ namespace ERP_Condominio_Presentation.App_Start {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ERP_Condominio {
+    internal class ERP_Condominio_Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ERP_Condominio() {
+        internal ERP_Condominio_Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ERP_Condominio_Presentation.App_Start {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_Condominio_Presentation.App_Start.ERP_Condominio", typeof(ERP_Condominio).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ERP_Condominio_Presentation.App_Start.ERP_Condominio_Resources", typeof(ERP_Condominio_Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -390,6 +390,42 @@ namespace ERP_Condominio_Presentation.App_Start {
         internal static string M0038 {
             get {
                 return ResourceManager.GetString("M0038", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Já existe um sub-síndico cadastrado. Impossível cadastrar outro.
+        /// </summary>
+        internal static string M0039 {
+            get {
+                return ResourceManager.GetString("M0039", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Número de conselheiros atingiu o limite estabelecido pelo condomínio. Impossível cadastra outro.
+        /// </summary>
+        internal static string M0040 {
+            get {
+                return ResourceManager.GetString("M0040", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Esse morador já faz parte do quadro diretor..
+        /// </summary>
+        internal static string M0041 {
+            get {
+                return ResourceManager.GetString("M0041", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Data inicial superior a data corrente.
+        /// </summary>
+        internal static string M0042 {
+            get {
+                return ResourceManager.GetString("M0042", resourceCulture);
             }
         }
         

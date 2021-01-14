@@ -47,6 +47,17 @@ namespace ApplicationServices.Services
             return lista;
         }
 
+        public List<TIPO_MENSAGEM> GetAllTipos()
+        {
+            return _baseService.GetAllTipos();
+        }
+
+        public CONFIGURACAO CarregaConfiguracao(Int32 id)
+        {
+            CONFIGURACAO conf = _baseService.CarregaConfiguracao(id);
+            return conf;
+        }
+
         public Int32 ValidateCreate(CORPO_DIRETIVO item, USUARIO usuario)
         {
             try
