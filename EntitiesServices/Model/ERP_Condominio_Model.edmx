@@ -111,28 +111,25 @@
             <PropertyRef Name="AUAC_CD_ID" />
           </Key>
           <Property Name="AUAC_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASSI_CD_ID" Type="int" />
           <Property Name="USUA_CD_ID" Type="int" Nullable="false" />
           <Property Name="GRPA_CD_ID" Type="int" />
+          <Property Name="UNID_CD_ID" Type="int" />
+          <Property Name="TIDO_CD_ID" Type="int" />
           <Property Name="AUAC_NM_VISITANTE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AUAC_NR_DOCUMENTO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="AUAC_DS_MOTIVO" Type="varchar" MaxLength="150" />
           <Property Name="AUAC_NM_EMPRESA" Type="varchar" MaxLength="50" />
           <Property Name="AUAC_IN_AVISO" Type="int" Nullable="false" />
           <Property Name="AUAC_IN_PERMANENTE" Type="int" Nullable="false" />
+          <Property Name="AUAC_IN_TIPO" Type="int" />
           <Property Name="AUAC_DT_VISITA" Type="date" />
           <Property Name="AUAC_DT_LIMITE" Type="date" />
           <Property Name="AUAC_DT_ENTRADA" Type="datetime" />
           <Property Name="AUAC_DT_SAIDA" Type="datetime" />
           <Property Name="AUAC_DS_OBSERVACOES" Type="varchar" MaxLength="250" />
-          <Property Name="AUAC_CD_VISITANTE" Type="varchar" MaxLength="50" />
-          <Property Name="AUAC_DT_CADASTRO" Type="date" Nullable="false" />
           <Property Name="AUAC_IN_ATIVO" Type="int" Nullable="false" />
-          <Property Name="AUAC_HR_ENTRADA" Type="varchar" MaxLength="10" />
-          <Property Name="AUAC_NR_SAIDA" Type="varchar" MaxLength="10" />
-          <Property Name="AUAC_IN_TIPO" Type="int" Nullable="false" />
-          <Property Name="AUAC_IN_CONTROLE" Type="int" />
-          <Property Name="ASSI_CD_ID" Type="int" />
-          <Property Name="UNID_CD_ID" Type="int" />
+          <Property Name="AUAC_AQ_FOTO" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="CARGO">
           <Key>
@@ -810,6 +807,14 @@
           <Property Name="TIAM_NM_NOME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TIAM_IN_ATIVO" Type="int" />
         </EntityType>
+        <EntityType Name="TIPO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="TIDO_CD_ID" />
+          </Key>
+          <Property Name="TIDO_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIDO_NM_NOME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIDO_IN_ATIVO" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="TIPO_ENCOMENDA">
           <Key>
             <PropertyRef Name="TIEN_CD_ID" />
@@ -1188,6 +1193,18 @@
             </Principal>
             <Dependent Role="AUTORIZACAO_ACESSO">
               <PropertyRef Name="GRPA_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO">
+          <End Role="TIPO_DOCUMENTO" Type="Self.TIPO_DOCUMENTO" Multiplicity="0..1" />
+          <End Role="AUTORIZACAO_ACESSO" Type="Self.AUTORIZACAO_ACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTO">
+              <PropertyRef Name="TIDO_CD_ID" />
+            </Principal>
+            <Dependent Role="AUTORIZACAO_ACESSO">
+              <PropertyRef Name="TIDO_CD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2511,6 +2528,7 @@
           <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEMPLATE" EntityType="Self.TEMPLATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_AMBIENTE" EntityType="Self.TIPO_AMBIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_DOCUMENTO" EntityType="Self.TIPO_DOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_ENCOMENDA" EntityType="Self.TIPO_ENCOMENDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_GRUPO" EntityType="Self.TIPO_GRUPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_MENSAGEM" EntityType="Self.TIPO_MENSAGEM" Schema="dbo" store:Type="Tables" />
@@ -2585,6 +2603,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_AUTORIZACAO_ACESSO_GRAU_PARENTESCO" Association="Self.FK_AUTORIZACAO_ACESSO_GRAU_PARENTESCO">
             <End Role="GRAU_PARENTESCO" EntitySet="GRAU_PARENTESCO" />
+            <End Role="AUTORIZACAO_ACESSO" EntitySet="AUTORIZACAO_ACESSO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO" Association="Self.FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO">
+            <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
             <End Role="AUTORIZACAO_ACESSO" EntitySet="AUTORIZACAO_ACESSO" />
           </AssociationSet>
           <AssociationSet Name="FK_AUTORIZACAO_ACESSO_UNIDADE" Association="Self.FK_AUTORIZACAO_ACESSO_UNIDADE">
@@ -3194,6 +3216,10 @@
           <NavigationProperty Name="GRAU_PARENTESCO" Relationship="Self.FK_AUTORIZACAO_ACESSO_GRAU_PARENTESCO" FromRole="AUTORIZACAO_ACESSO" ToRole="GRAU_PARENTESCO" />
           <NavigationProperty Name="UNIDADE" Relationship="Self.FK_AUTORIZACAO_ACESSO_UNIDADE" FromRole="AUTORIZACAO_ACESSO" ToRole="UNIDADE" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_AUTORIZACAO_ACESSO_USUARIO" FromRole="AUTORIZACAO_ACESSO" ToRole="USUARIO" />
+          <Property Name="AUAC_AQ_FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TIDO_CD_ID" Type="Int32" />
+          <NavigationProperty Name="TIPO_DOCUMENTO" Relationship="ERP_Condominio_DBModel.FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO" FromRole="AUTORIZACAO_ACESSO" ToRole="TIPO_DOCUMENTO" />
+          <Property Name="AUAC_IN_TIPO1" Type="Int32" />
         </EntityType>
         <EntityType Name="CARGO">
           <Key>
@@ -6134,6 +6160,11 @@
             <End Role="TIPO_GRUPO" EntitySet="TIPO_GRUPO" />
             <End Role="GRUPO" EntitySet="GRUPO" />
           </AssociationSet>
+          <EntitySet Name="TIPO_DOCUMENTO" EntityType="ERP_Condominio_DBModel.TIPO_DOCUMENTO" />
+          <AssociationSet Name="FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO" Association="ERP_Condominio_DBModel.FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO">
+            <End Role="TIPO_DOCUMENTO" EntitySet="TIPO_DOCUMENTO" />
+            <End Role="AUTORIZACAO_ACESSO" EntitySet="AUTORIZACAO_ACESSO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="FORNECEDOR_COMENTARIO">
           <Key>
@@ -6255,6 +6286,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TIPO_DOCUMENTO">
+          <Key>
+            <PropertyRef Name="TIDO_CD_ID" />
+          </Key>
+          <Property Name="TIDO_CD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIDO_NM_NOME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TIDO_IN_ATIVO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AUTORIZACAO_ACESSO" Relationship="ERP_Condominio_DBModel.FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO" FromRole="TIPO_DOCUMENTO" ToRole="AUTORIZACAO_ACESSO" />
+        </EntityType>
+        <Association Name="FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO">
+          <End Type="ERP_Condominio_DBModel.TIPO_DOCUMENTO" Role="TIPO_DOCUMENTO" Multiplicity="0..1" />
+          <End Type="ERP_Condominio_DBModel.AUTORIZACAO_ACESSO" Role="AUTORIZACAO_ACESSO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_DOCUMENTO">
+              <PropertyRef Name="TIDO_CD_ID" />
+            </Principal>
+            <Dependent Role="AUTORIZACAO_ACESSO">
+              <PropertyRef Name="TIDO_CD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6372,6 +6424,9 @@
           <EntitySetMapping Name="AUTORIZACAO_ACESSO">
             <EntityTypeMapping TypeName="ERP_Condominio_DBModel.AUTORIZACAO_ACESSO">
               <MappingFragment StoreEntitySet="AUTORIZACAO_ACESSO">
+                <ScalarProperty Name="AUAC_IN_TIPO1" ColumnName="AUAC_IN_TIPO" />
+                <ScalarProperty Name="TIDO_CD_ID" ColumnName="TIDO_CD_ID" />
+                <ScalarProperty Name="AUAC_AQ_FOTO" ColumnName="AUAC_AQ_FOTO" />
                 <ScalarProperty Name="AUAC_CD_ID" ColumnName="AUAC_CD_ID" />
                 <ScalarProperty Name="USUA_CD_ID" ColumnName="USUA_CD_ID" />
                 <ScalarProperty Name="GRPA_CD_ID" ColumnName="GRPA_CD_ID" />
@@ -6386,13 +6441,7 @@
                 <ScalarProperty Name="AUAC_DT_ENTRADA" ColumnName="AUAC_DT_ENTRADA" />
                 <ScalarProperty Name="AUAC_DT_SAIDA" ColumnName="AUAC_DT_SAIDA" />
                 <ScalarProperty Name="AUAC_DS_OBSERVACOES" ColumnName="AUAC_DS_OBSERVACOES" />
-                <ScalarProperty Name="AUAC_CD_VISITANTE" ColumnName="AUAC_CD_VISITANTE" />
-                <ScalarProperty Name="AUAC_DT_CADASTRO" ColumnName="AUAC_DT_CADASTRO" />
                 <ScalarProperty Name="AUAC_IN_ATIVO" ColumnName="AUAC_IN_ATIVO" />
-                <ScalarProperty Name="AUAC_HR_ENTRADA" ColumnName="AUAC_HR_ENTRADA" />
-                <ScalarProperty Name="AUAC_NR_SAIDA" ColumnName="AUAC_NR_SAIDA" />
-                <ScalarProperty Name="AUAC_IN_TIPO" ColumnName="AUAC_IN_TIPO" />
-                <ScalarProperty Name="AUAC_IN_CONTROLE" ColumnName="AUAC_IN_CONTROLE" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="UNID_CD_ID" ColumnName="UNID_CD_ID" />
               </MappingFragment>
@@ -7339,6 +7388,15 @@
                 <ScalarProperty Name="TIGR_NM_NOME" ColumnName="TIGR_NM_NOME" />
                 <ScalarProperty Name="ASSI_CD_ID" ColumnName="ASSI_CD_ID" />
                 <ScalarProperty Name="TIGR_CD_ID" ColumnName="TIGR_CD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_DOCUMENTO">
+            <EntityTypeMapping TypeName="ERP_Condominio_DBModel.TIPO_DOCUMENTO">
+              <MappingFragment StoreEntitySet="TIPO_DOCUMENTO">
+                <ScalarProperty Name="TIDO_IN_ATIVO" ColumnName="TIDO_IN_ATIVO" />
+                <ScalarProperty Name="TIDO_NM_NOME" ColumnName="TIDO_NM_NOME" />
+                <ScalarProperty Name="TIDO_CD_ID" ColumnName="TIDO_CD_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

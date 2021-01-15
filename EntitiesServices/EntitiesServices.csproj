@@ -143,6 +143,7 @@
     <Compile Include="EntitiesServices\CategoriaFornecedorService.cs" />
     <Compile Include="EntitiesServices\CorpoDiretivoService.cs" />
     <Compile Include="EntitiesServices\FornecedorCnpjService.cs" />
+    <Compile Include="EntitiesServices\AutorizacaoAcessoService.cs" />
     <Compile Include="EntitiesServices\FornecedorService.cs" />
     <Compile Include="EntitiesServices\VagaService.cs" />
     <Compile Include="EntitiesServices\UnidadeService.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Interfaces\EntitiesServices\ICategoriaFornecedorService.cs" />
     <Compile Include="Interfaces\EntitiesServices\ICorpoDiretivoService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IFornecedorCnpjService.cs" />
+    <Compile Include="Interfaces\EntitiesServices\IAutorizacaoAcessoService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IFornecedorService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IVagaService.cs" />
     <Compile Include="Interfaces\EntitiesServices\IUnidadeService.cs" />
@@ -200,6 +202,9 @@
     <Compile Include="Interfaces\Repositories\IAgendaVinculoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IAssinanteRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAutorizacaoAcessoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ITipoDocumentoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IGrauParentescoRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICategoriaFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedoMensagemRepository.cs" />
     <Compile Include="Interfaces\Repositories\IFornecedorContatoRepository.cs" />
@@ -430,6 +435,9 @@
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TIPO_AMBIENTE.cs">
+      <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TIPO_DOCUMENTO.cs">
       <DependentUpon>ERP_Condominio_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TIPO_ENCOMENDA.cs">

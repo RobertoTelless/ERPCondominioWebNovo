@@ -37,10 +37,14 @@ namespace EntitiesServices.Model
         public Nullable<int> AUAC_IN_CONTROLE { get; set; }
         public Nullable<int> ASSI_CD_ID { get; set; }
         public Nullable<int> UNID_CD_ID { get; set; }
+        public string AUAC_AQ_FOTO { get; set; }
+        public Nullable<int> TIDO_CD_ID { get; set; }
+        public Nullable<int> AUAC_IN_TIPO1 { get; set; }
     
         public virtual ASSINANTE ASSINANTE { get; set; }
         public virtual GRAU_PARENTESCO GRAU_PARENTESCO { get; set; }
         public virtual UNIDADE UNIDADE { get; set; }
         public virtual USUARIO USUARIO { get; set; }
+        public virtual TIPO_DOCUMENTO TIPO_DOCUMENTO { get; set; }
     }
 }

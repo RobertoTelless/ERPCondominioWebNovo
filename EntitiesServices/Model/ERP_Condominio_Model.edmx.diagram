@@ -200,6 +200,8 @@
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_FORNECEDOR_MENSAGEM_USUARIO" />
         <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_GRUPO" Width="1.5" PointX="3.375" PointY="0.875" />
         <AssociationConnector Association="ERP_Condominio_DBModel.FK_GRUPO_TIPO_GRUPO" />
+        <EntityTypeShape EntityType="ERP_Condominio_DBModel.TIPO_DOCUMENTO" Width="1.5" PointX="0.75" PointY="3.875" />
+        <AssociationConnector Association="ERP_Condominio_DBModel.FK_AUTORIZACAO_ACESSO_TIPO_DOCUMENTO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

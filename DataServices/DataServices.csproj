@@ -136,6 +136,9 @@
     <Compile Include="Repositories\AgendaRepository.cs" />
     <Compile Include="Repositories\AgendaVinculoRepository.cs" />
     <Compile Include="Repositories\AssinanteRepository.cs" />
+    <Compile Include="Repositories\AutorizacaoAcessoRepository.cs" />
+    <Compile Include="Repositories\TipoDocumentoRepository.cs" />
+    <Compile Include="Repositories\GrauParentescoRepository.cs" />
     <Compile Include="Repositories\CategoriaFornecedorRepository.cs" />
     <Compile Include="Repositories\FornecedorMensagemRepository.cs" />
     <Compile Include="Repositories\FornecedorContatoRepository.cs" />
